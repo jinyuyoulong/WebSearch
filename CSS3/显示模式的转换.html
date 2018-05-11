@@ -1,0 +1,52 @@
+<pre>
+块级 行内 行内块元素 三者是可以相互转换的。
+display 显示
+block 块
+inline 行内
+
+块级 -> 行内元素 display: inline;
+
+行内 -> 块级 display: block;
+
+行内和块级 -> 行内块 display: inline-block;
+</pre>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>显示模式转换</title>
+
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red; 
+			display: inline;}
+		a{
+			width: 100px;
+			height: 100px;
+			background-color: #999; 
+			display: block;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background-color: #daa520; 
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+
+<a href="#">google</a>
+<a href="#">google</a>
+<a href="#">google</a>
+
+<span>a</span>
+<span>a</span>
+<span>a</span>
+</body>
+</html>

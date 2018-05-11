@@ -1,0 +1,20 @@
+CSS 层叠样式表
+	标签到底调用哪个样式，取决于css书写顺序，执行最后一个。不是取决于HTMLl里面的类名
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.red{color: red;}
+		.green{color: green;}
+		.box{width: 100px; height: 100px;}
+	</style>
+</head>
+<body>
+<div class="red green">我是div</div>
+<div class="red box">我是div</div>
+<div class="green box">我是div</div>
+
+</body>
+</html>
