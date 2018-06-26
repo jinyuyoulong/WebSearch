@@ -29,6 +29,11 @@
 			}
 		}
 
+		/*
+		@name 	name
+		@pwd 	pwd
+		@usertype 	用户类型：1.用户 2.管理员
+		*/
 		public function insertUser($name, $pwd, $usertype)
 		{
 			$db = new MyDB();
@@ -38,11 +43,10 @@
 				echo "open database yes<br>";
 			}
 
-			$md5pwd=md5($pwd);
 			$registtime = date("Y-m-d H:i:s");
 			$sql =<<<EOF
 		      insert into user(username,pwd,usertype,registtime)
-		      values('$name', '$md5pwd', $usertype, '$registtime');
+		      values('$name', '$pwd', $usertype, '$registtime');
 EOF;
 		    $result = $db->exec($sql);
 
@@ -81,10 +85,25 @@ SQL;
 
 			while ($row=$result->fetchArray(SQLITE3_ASSOC)) {
 				
-				var_dump($row);
-				echo "<br><br>";
-				print_r($row['username']);
+				return $row;
+				// var_dump($row);
+				// echo "<br><br>";
+				// print_r($row['username']);
 			}
+		}
+
+		public function selectRow($username, $tablename)
+		{
+			self::instance();
+			$sql=<<<SQL
+			SELECT * FROM $tablename WHERE username =$username;
+SQL;
+			$result = @self::$db->query($sql);
+
+			while ($row=$result->fetchArray(SQLITE3_ASSOC)) {				
+				return $row;
+			}
+			return$row;
 		}
 	}
 	
