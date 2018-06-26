@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<script type="text/javascript" src="./jQuery/jquery.js"></script>
+	<script type="text/javascript">
+		// $(function () {
+		// 	$("#send").click(function () {
+		// 		var cont = $("input").serialize();
+		// 		$.ajax({
+		// 			url: 'ab.php',
+		// 			type: 'post',
+		// 			dataType: 'json',
+		// 			data: cont,
+		// 			success: function (data) {
+		// 				var str = data.username + data.age + data.job;
+		// 				$("#result").html(str);
+		// 			},
+		// 			error: function (XMLHttpRequest,textStatus) {
+		// 				$("#result").html(XMLHttpRequest);
+		// 			}
+		// 		});
+		// 	});
+		// });
+		$(function () {
+			$("send").click(function () {
+				var cont = {username:$("input"[0].value,age:$("input")[1].value,job:$("input")[2].value)};
+				var url = 'ab.php';
+				$post(url,cont,function (data) {
+					var res = eval("("+data+")");
+					var str = res.username + res.age + res.job;
+					$("#result").html(str);
+				});
+			});
+		});
+	</script>
+	<title></title>
+</head>
+<body>
+	<div id = "result">一会看结果</div>
+	<form id="my" action="" method="post">
+		<p><span>姓名：</span><input type="text" name="username"></p>
+		<p><span>年龄：</span><input type="text" name="age"></p>
+		<p><span>工作：</span><input type="text" name="job"></p>
+	</form>
+	<button id="send">提交</button>
+</body>
+</html>
