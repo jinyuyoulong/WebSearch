@@ -50,7 +50,7 @@ class Response
 			);
 
 		if ($type == 'json') {
-				self::json($code,$message, $data);
+				return self::json($code,$message, $data);
 				exit;
 		}elseif ($type == 'array') {
 			var_dump($result);
@@ -81,7 +81,7 @@ class Response
 			'data' => $data 
 			);
 
-		echo json_encode($result);
+		return json_encode($result);
 		exit;
 	}
 

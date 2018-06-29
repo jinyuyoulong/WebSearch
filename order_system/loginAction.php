@@ -1,31 +1,33 @@
 <?php
-import 'head.php'
+
+
 require_once('./response.php');
 require_once('./sqlmanager.php');
 
 $account = $_POST['account'];
 $pwd = $_POST['password'];
 
-// 查表
-// $result = DBUtile::fetchUser(1);
-
-
 $messsage = "";
-if ($result['pwd'] == $pwd) {
-	$arr = array(
-	'id' =>1 ,
-	'name' => $account,
-	'pwd' => $pwd,
-	);
+$code = 0;
+$arr = array();
+// 查表
+$result = DBUtile::selectRow($account, 'username','user');
+
+
+if (count($result) > 0)
+{
+    $firstRow = $result[0];
+    if ($firstRow['pwd'] == md5($pwd)) {
+        header("Location: home.php");
+
+    }else{
+        $messsage = '密码错误';
+        echo $messsage."<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";
+    }
 }else{
-	$arr = [];
-	$messsage = '密码错误';
+    $messsage = '用户名错误';
+    echo $messsage."<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";
 }
 
-$code = 200;
+?>
 
-if ($code != 200) {
-	Response::error($code, $messsage);
-}else{
-	Response::show($code,$messsage,$arr,'array');
-}

@@ -34,7 +34,7 @@
 		@pwd 	pwd
 		@usertype 	用户类型：1.用户 2.管理员
 		*/
-		public function insertUser($name, $pwd, $usertype)
+		static public function insertUser($name, $pwd, $usertype)
 		{
 			$db = new MyDB();
 			if (!$db) {
@@ -56,8 +56,8 @@ EOF;
 				echo "insert date done successfully";
 		    }
 		   	$db->close();
-
-		}
+            return $result;
+        }
 
 		public function deleteSQL($tableName, $id)
 		{
@@ -91,19 +91,28 @@ SQL;
 				// print_r($row['username']);
 			}
 		}
-
-		public function selectRow($username, $tablename)
+        /*查询username字段，在某一表中*/
+		static public function selectRow($username, $colum, $tablename)
 		{
 			self::instance();
 			$sql=<<<SQL
-			SELECT * FROM $tablename WHERE username =$username;
+			SELECT * FROM $tablename WHERE $colum ='$username';
 SQL;
-			$result = @self::$db->query($sql);
+//			echo $sql;
 
-			while ($row=$result->fetchArray(SQLITE3_ASSOC)) {				
-				return $row;
-			}
-			return$row;
+			$result = @self::$db->query($sql);
+			$selectedArr = array();
+            if ($result)
+            {
+//                var_dump($result->fetchArray(SQLITE3_ASSOC));
+
+                while ($row=$result->fetchArray(SQLITE3_ASSOC)) {
+                    $selectedArr[]=$row;
+                }
+                return $selectedArr;
+            }else{
+                return [];
+            }
 		}
 	}
 	
