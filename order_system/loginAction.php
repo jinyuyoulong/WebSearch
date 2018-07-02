@@ -18,6 +18,9 @@ if (count($result) > 0)
 {
     $firstRow = $result[0];
     if ($firstRow['pwd'] == md5($pwd)) {
+
+        $_SESSION['user'] = trim($account);
+
         header("Location: home.php");
 
     }else{

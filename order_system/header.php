@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE HTML>
 <html class="no-js">
     <head>
@@ -14,7 +15,6 @@
         <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
         <title></title>
-        <meta name="robots" content="noindex, nofollow">
     </head>
     <body>
 

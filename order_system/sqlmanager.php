@@ -16,7 +16,13 @@
 		}	
 	}
 	/**
-	 * 
+	 * if (!$result) {
+		    	echo(@self::$db->lastErrorMsg());
+		    }else{
+				echo "insert date done successfully";
+		    }
+		   	@self::$db->close();
+            return $result;
 	 */
 	class DBUtile
 	{
@@ -36,27 +42,18 @@
 		*/
 		static public function insertUser($name, $pwd, $usertype)
 		{
-			$db = new MyDB();
-			if (!$db) {
-				echo($db->lastErrorMsg());
+			self::instance();
+			if (!self::$db) {
+				echo(@self::$db->lastErrorMsg());
 			}else{
 				echo "open database yes<br>";
 			}
 
 			$registtime = date("Y-m-d H:i:s");
-			$sql =<<<EOF
-		      insert into user(username,pwd,usertype,registtime)
-		      values('$name', '$pwd', $usertype, '$registtime');
-EOF;
-		    $result = $db->exec($sql);
+			$sql ="insert into user(username,pwd,usertype,registtime) values('$name', '$pwd', $usertype, '$registtime')";
+		    $result = @self::$db->exec($sql);
 
-		    if (!$result) {
-		    	echo($db->lastErrorMsg());
-		    }else{
-				echo "insert date done successfully";
-		    }
-		   	$db->close();
-            return $result;
+		    
         }
 
 		public function deleteSQL($tableName, $id)
@@ -69,7 +66,7 @@ SQL;
 			$result = @self::$db->exec($sql);
 
 			if (!$result) {
-				echo($db->lastErrorMsg());
+				echo(@self::$db->lastErrorMsg());
 			}else{
 				echo "<br>delete successfully";
 			}
@@ -114,8 +111,32 @@ SQL;
                 return [];
             }
 		}
+
+		static public function addOrder($uid)
+	    {
+		    self::instance();
+
+		    $now = date('Y-m-d H:i:s');
+		    $sql = "insert into user_order (uid,time) values ('$uid', '$now');select last_insert_rowid()";
+		    $result = @self::$db->exec($sql);
+            var_dump($result);
+            
+		    if (!$result) {
+		    	echo(@self::$db->lastErrorMsg());
+		    }else{
+				echo "insert date done successfully".$result;
+		    }
+		    
+		   	@self::$db->close();
+            return $result;
+	    }
+
+		//end class
 	}
-	
+
+
+		
+    DBUtile::addOrder('2');
 	// DBUtile::insertUser('常营幼儿园','333', 1);
 	// DBUtile::fetchUser(1);
 	// DBUtile::deleteSQL('user', 4);

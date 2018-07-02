@@ -1,15 +1,14 @@
+<?php include 'header.php'; ?>
 <?php
-/**
- * Created by PhpStorm.
- * User: fanjinlong
- * Date: 2018/6/29
- * Time: 下午6:21
- */
-include_once 'header.php';
-
+echo('你好，'.$_SESSION['user']);
 ?>
-home 首页，展示功能选择
+<div class="home-div">
+    <button>订单列表</button>
+</div>
+<div class="home-div">
+	<a href="./sqlmanager.php">something</a>
+    <button href='./sqlmanager.php'>something</button>
+</div>
 
-<?php
-include_once 'footer.php';
-?>
+
+<?php include_once 'footer.php'; ?>

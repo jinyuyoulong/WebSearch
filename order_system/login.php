@@ -1,6 +1,4 @@
-<?php 
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 <div style="padding:30px;">
 	<form action="loginAction.php" method="post">
 		<label for="name">用户名:</label>
