@@ -5,8 +5,8 @@ echo('你好，'.$_SESSION['user']);
 <div class="home-div">
     <button>订单列表</button>
 </div>
-<div class="home-div">
-	<a href="./sqlmanager.php">something</a>
+<div class="">
+	<a class="btn btn-default" href="./sqlmanager.php">something</a>
     <button href='./sqlmanager.php'>something</button>
 </div>
 

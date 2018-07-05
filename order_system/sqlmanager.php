@@ -56,11 +56,11 @@
 		    
         }
 
-		public function deleteSQL($tableName, $id)
+		public function deleteSQL($mtableName, $id)
 		{
 			self::instance();
 			$sql=<<<SQL
-			delete from $tableName where uid=$id;
+			delete from $mtableName where uid=$id;
 SQL;
 			echo($sql);
 			$result = @self::$db->exec($sql);
@@ -89,11 +89,11 @@ SQL;
 			}
 		}
         /*查询username字段，在某一表中*/
-		static public function selectRow($username, $colum, $tablename)
+		static public function selectRow($colum_value, $colum, $mtablename)
 		{
 			self::instance();
 			$sql=<<<SQL
-			SELECT * FROM $tablename WHERE $colum ='$username';
+			SELECT * FROM $mtablename WHERE $colum ='$colum_value';
 SQL;
 //			echo $sql;
 
@@ -112,19 +112,40 @@ SQL;
             }
 		}
 
-		static public function addOrder($uid)
+		static public function fetchAllRow($mtablename)
+		{
+			self::instance();
+			$sql = "select * from $mtablename";
+			$result = @self::$db->query($sql);
+			$selectedArr = array();
+			if ($result){
+			    while ($row= $result->fetchArray(SQLITE3_ASSOC)){
+			        $selectedArr[] = $row;
+                }
+                return $selectedArr;
+            }else{
+			    return [];
+            }
+		}
+		static public function addOrder($uid,$orderInfos)
 	    {
 		    self::instance();
 
 		    $now = date('Y-m-d H:i:s');
-		    $sql = "insert into user_order (uid,time) values ('$uid', '$now');select last_insert_rowid()";
+		    $sql = "insert into user_order (uid,time) values ('$uid', '$now');";
 		    $result = @self::$db->exec($sql);
-            var_dump($result);
-            
+
+
 		    if (!$result) {
 		    	echo(@self::$db->lastErrorMsg());
 		    }else{
-				echo "insert date done successfully".$result;
+				echo "insert date done successfully";
+	            $rowid = @self::$db->lastInsertRowID();
+	            if ($rowid) {
+	            	foreach ($orderInfos as $item) {
+	            		echo($item);
+	            	}
+	            }
 		    }
 		    
 		   	@self::$db->close();
@@ -136,7 +157,7 @@ SQL;
 
 
 		
-    DBUtile::addOrder('2');
+    // DBUtile::addOrder('2');
 	// DBUtile::insertUser('常营幼儿园','333', 1);
 	// DBUtile::fetchUser(1);
 	// DBUtile::deleteSQL('user', 4);

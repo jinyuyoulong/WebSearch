@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DBUtile	sqlmanager.php	/^	class DBUtile$/;"	c
+MyDB	sqlmanager.php	/^	class MyDB extends SQLite3$/;"	c
+Response	response.php	/^class Response$/;"	c
+__construct	sqlmanager.php	/^		function __construct()$/;"	f
+account	loginAction.php	/^$account = $_POST['account'];$/;"	v
+addOrder	sqlmanager.php	/^		static public function addOrder($uid)$/;"	f
+arr	loginAction.php	/^$arr = array();$/;"	v
+attr	response.php	/^				$attr = "id='{$key}'";$/;"	v
+code	loginAction.php	/^$code = 0;$/;"	v
+colum	sqlmanager.php	/^			SELECT * FROM $tablename WHERE $colum ='$username';$/;"	v
+column_name	registAction.php	/^    $column_name = 'username';$/;"	v
+data	response.php	/^	public static function json($code,$message="", $data = array())$/;"	v
+data	response.php	/^$data = array($/;"	v
+db	sqlmanager.php	/^		private static $db;$/;"	v
+deleteSQL	sqlmanager.php	/^		public function deleteSQL($tableName, $id)$/;"	f
+error	login.php	/^		$error=$_POST['error'];$/;"	v
+error	response.php	/^	public static function error($code, $error_msg="", $type=self::JSON)$/;"	f
+error_msg	response.php	/^	public static function error($code, $error_msg="", $type=self::JSON)$/;"	v
+fetchUser	sqlmanager.php	/^		public function fetchUser($id)$/;"	f
+firstRow	loginAction.php	/^    $firstRow = $result[0];$/;"	v
+insertUser	sqlmanager.php	/^		static public function insertUser($name, $pwd, $usertype)$/;"	f
+instance	sqlmanager.php	/^		private static function instance()$/;"	f
+json	response.php	/^	public static function json($code,$message="", $data = array())$/;"	f
+key	response.php	/^				$key = "item";$/;"	v
+key	response.php	/^		foreach ($data as $key => $value) {$/;"	v
+message	response.php	/^	public static function show($code, $message="", $data=array(), $type=self::JSON){$/;"	v
+messsage	loginAction.php	/^        $messsage = '密码错误';$/;"	v
+messsage	loginAction.php	/^    $messsage = '用户名错误';$/;"	v
+messsage	loginAction.php	/^$messsage = "";$/;"	v
+name	registAction.php	/^$name = $_POST['name'];$/;"	v
+now	sqlmanager.php	/^		    $now = date('Y-m-d H:i:s');$/;"	v
+password	registAction.php	/^        $password = md5($password);$/;"	v
+password	registAction.php	/^$password = $_POST['password'];$/;"	v
+pwd	loginAction.php	/^$pwd = $_POST['password'];$/;"	v
+registtime	sqlmanager.php	/^			$registtime = date("Y-m-d H:i:s");$/;"	v
+result	loginAction.php	/^$result = DBUtile::selectRow($account, 'username','user');$/;"	v
+result	registAction.php	/^	    $result = DBUtile::insertUser($name, $password, $usertype);$/;"	v
+result	registAction.php	/^    $result = DBUtile::selectRow($name, $column_name, $tablename);$/;"	v
+result	response.php	/^		$result = array($/;"	v
+result	sqlmanager.php	/^			$result = @self::$db->exec($sql);$/;"	v
+result	sqlmanager.php	/^			$result = @self::$db->query($sql);$/;"	v
+result	sqlmanager.php	/^		    $result = @self::$db->exec($sql);$/;"	v
+result	user_orders.php	/^$result = DBUtile::selectRow('')/;"	v
+ret	sqlmanager.php	/^\/\/ 	$ret = $db->query($sql);$/;"	v
+rowid	sqlmanager.php	/^            $rowid = @self::$db->lastInsertRowID();$/;"	v
+selectRow	sqlmanager.php	/^		static public function selectRow($username, $colum, $tablename)$/;"	f
+selectedArr	sqlmanager.php	/^			$selectedArr = array();$/;"	v
+show	response.php	/^	public static function show($code, $message="", $data=array(), $type=self::JSON){$/;"	f
+sql	sqlmanager.php	/^			$sql ="insert into user(username,pwd,usertype,registtime) values('$name', '$pwd', $usertype, '$registtime')";$/;"	v
+sql	sqlmanager.php	/^			$sql=<<<SQL$/;"	v
+sql	sqlmanager.php	/^		    $sql = "insert into user_order (uid,time) values ('$uid', '$now');";$/;"	v
+sql	sqlmanager.php	/^\/\/ 	$sql = <<<eof$/;"	v
+tablename	registAction.php	/^    $tablename = 'user';$/;"	v
+type	response.php	/^		$type = isset($_GET['format'])?$_GET['format']:self::JSON;$/;"	v
+usertype	registAction.php	/^$usertype = $_POST['usertype'];$/;"	v
+xml	response.php	/^		$xml = "<?xml version='1.0' encoding='UTF-8'?>";$/;"	v
+xml	response.php	/^		$xml =$attr =  "";$/;"	v
+xmlEncode	response.php	/^	public static  function xmlEncode($code,$message,$data=array()){$/;"	f
+xmlToEncode	response.php	/^	public static function xmlToEncode($data){$/;"	f
