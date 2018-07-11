@@ -26,6 +26,8 @@ if (trim($name) != "" and
         if ($result)
         {
             echo "添加成功!<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";
+        }else{
+            echo('注册失败');
         }
     }
 

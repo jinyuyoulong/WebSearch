@@ -32,6 +32,8 @@
 		{
 			if (!self::$db) {
 				self::$db = new MyDB();
+			}else{
+				echo(@self::$db->lastErrorMsg());
 			}
 		}
 
@@ -53,7 +55,6 @@
 			$sql ="insert into user(username,pwd,usertype,registtime) values('$name', '$pwd', $usertype, '$registtime')";
 		    $result = @self::$db->exec($sql);
 
-		    
         }
 
 		public function deleteSQL($mtableName, $id)
@@ -87,6 +88,42 @@ SQL;
 				// echo "<br><br>";
 				// print_r($row['username']);
 			}
+		}
+
+//		============================================================================
+
+		static public function insertRowInTable($mtablename, $key_values)	
+		{
+			self::instance();
+
+			$sql ="insert into $mtablename(";
+			if (count($key_values) > 0) {
+				foreach ($key_values as $key => $value) {
+					$sql = $sql.$key;
+				}
+				$sql=$sql.') values(';
+				foreach ($key_values as $key => $value) {
+                    if (empty($value))
+                    {
+                        echo '插入的数据格式错误';
+                        return false;
+                    }
+					$sql = $sql."'".$value."'";
+				}
+				$sql = $sql.')';
+			}else{
+			    echo '插入的数据格式错误';
+            }
+
+			echo('sql is: '.$sql.'<br>');
+
+		    $result = @self::$db->exec($sql);
+            if ($result) {
+                return $result;
+            }else{
+                echo self::$db->lastErrorMsg();
+            }
+
 		}
         /*查询username字段，在某一表中*/
 		static public function selectRow($colum_value, $colum, $mtablename)
