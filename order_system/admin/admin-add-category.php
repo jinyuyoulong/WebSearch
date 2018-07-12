@@ -1,4 +1,4 @@
-<?php  include_once 'header.php'?>
+<?php include_once 'header.php' ?>
 <br>
 <br>
 <div class="container">
@@ -11,7 +11,7 @@
 </div>
 
 <?php
-require_once 'sqlmanager.php' ;
+require_once 'sqlmanager.php';
 require_once 'db-sqlite.php';
 require_once 'ff-tools.php';
 

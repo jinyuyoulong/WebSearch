@@ -1,4 +1,4 @@
-<?php include 'header.php'?>
+<?php include 'header.php' ?>
 <div style="padding:30px;">
 	<form action="registAction.php" method="post">
 		<label for="name">用户名:</label>
@@ -13,4 +13,4 @@
 		<input type="submit" value="注册" style="width: 200px">
 	</form>
 </div>
-<?php include 'footer.php'?>
+<?php include 'footer.php' ?>

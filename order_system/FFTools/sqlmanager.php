@@ -1,15 +1,14 @@
 <?php  
 
-	/**
-	 * 
-	 */
 	class MyDB extends SQLite3
 	{
 		
 		function __construct()
 		{
+
 			try {
-				$this->open('SchoolOrders.db');
+			    $home_path = dirname(__FILE__);
+				$this->open($home_path.'/SchoolOrders.db');
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
@@ -156,14 +155,16 @@ SQL;
 			$result = @self::$db->query($sql);
 			$selectedArr = array();
 			if ($result){
-			    while ($row= $result->fetchArray(SQLITE3_ASSOC)){
+			    while ($row = $result->fetchArray(SQLITE3_ASSOC)){
 			        $selectedArr[] = $row;
                 }
+
                 return $selectedArr;
             }else{
 			    return [];
             }
 		}
+
 		static public function addOrder($uid,$orderInfos)
 	    {
 		    self::instance();

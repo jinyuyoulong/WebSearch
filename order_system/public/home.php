@@ -10,11 +10,15 @@
                 echo('你好，'.$_SESSION['user']);
             ?>
         </div>
+
+        <hr/>
         <div class="span8 offset-1">
             <a class="btn btn-primary" href="create-order.php">下单</a>
-           <a class="btn btn-primary" href="admin-orders.php">统计</a>
-
-           <a class="btn btn-default" href="./sqlmanager.php">goto sqlite manager page</a>
+           <a class="btn btn-primary" href="user_orders.php">统计</a>
+            <hr />
+            <a class="btn btn-primary" href="login.php">退出</a>
+            <hr/>
+           <a class="btn btn-default" href="../FFTools/sqlmanager.php">goto sqlite manager page</a>
        </div>
     </div>
 
