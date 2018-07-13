@@ -153,6 +153,8 @@ SQL;
 			self::instance();
 			$sql = "select * from $mtablename";
 			$result = @self::$db->query($sql);
+
+//			echo $sql;
 			$selectedArr = array();
 			if ($result){
 			    while ($row = $result->fetchArray(SQLITE3_ASSOC)){
@@ -163,6 +165,7 @@ SQL;
             }else{
 			    return [];
             }
+
 		}
 
 		static public function addOrder($uid,$orderInfos)
@@ -199,15 +202,4 @@ SQL;
 	// DBUtile::insertUser('常营幼儿园','333', 1);
 	// DBUtile::fetchUser(1);
 	// DBUtile::deleteSQL('user', 4);
-
-// 	$sql = <<<eof
-// 		SELECT * FROM categorys where id = 0;
-// eof;
-
-// 	$ret = $db->query($sql);
-
-// 	while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-// 		echo "ID = ".$row['ID']."<br>";
-// 		echo "NAME = ".$row['NAME']."<br>";
-// 	}
 ?>

@@ -11,3 +11,5 @@ $result = DBUtile::selectRow($_SESSION['uid'],'id', 'user_order');
 foreach ($result as $row){
     var_dump($row);
 }
+
+echo 'on one used';

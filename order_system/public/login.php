@@ -15,16 +15,5 @@
 	<a href="register.php" class="button">注册</a>
 </div>
 <?php
-// 	接受error
-	if(!empty($_POST['error'])){
-		
-// 		接受错误编号
-		$error=$_POST['error'];
-			if($error==1){
-				echo "<br/><font color ='red' size='3'>你的用户名或密码错误</font>";
-			}
-	}
-?>
-<?php
 include 'footer.php';
 ?>

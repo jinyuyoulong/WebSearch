@@ -10,6 +10,7 @@ include_once 'header.php';
 <br><br>
 <div class="container">
     <div class="row">
+        <a href="admin-select-timer.php">055</a>
         <div class="span3">
             <a class="btn btn-primary" href="admin_library_page.php">仓储管理</a> <br>
             <br>
