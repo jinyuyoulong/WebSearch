@@ -5,6 +5,8 @@ require_once '../FFTools/sqlmanager.php';
 
 $result = DBUtile::fetchAllRow('vegetable');
 $categories = DBUtile::fetchAllRow('categorys');
+
+
 $response = array();
 foreach ($categories as $row){
     $rowItems = array();
@@ -40,25 +42,34 @@ echo '</form>';
 //==========================
 // get post request data
 
-echo "uid is ".$_SESSION['uid'];
+if (!empty($_GET)) {
+    $user_order_paras['uid'] = $_SESSION['uid'];
+    $user_order_paras['time'] = time();
+    var_dump($user_order_paras);
 
-foreach ($_GET as $vegetableId => $value){
-    if (!empty($value)){
-        echo $vegetableId.':'.$value;
+//    $user_order_result =  DBUtile::insertRowInTable('user_order',$user_order_paras);
+    $user_order_result = DBUtile::addOrder($_SESSION['uid']);
+    if ($user_order_result){
+        var_dump($user_order_result);
+    }else{
+        echo '创建订单失败!';
     }
+//    $paras = array();
+//    foreach ($_GET as $vegetableId => $value) {
+//        if (!empty($value)) {
+//            echo $vegetableId . ':' . $value;
+//            echo '<br>';
+//            $paras['id'] = $value;
+//            $paras['number'] = $value;
+//        }
+//    }
+//    $insert_result = DBUtile::insertRowInTable('vegetables',)
+
+}else{
+    echo 'not request';
 }
 ?>
 
 
 <?  include_once 'foot.php'; include_once 'footer.php';?>
 
-array(3) {
-[0]=> array(2) {
-    ["id"]=> int(0) ["name"]=> string(6) "叶菜"
-    }
-[1]=> array(2) {
-    ["id"]=> int(1) ["name"]=> string(3) "肉"
-    }
-[2]=> array(2) {
-    ["id"]=> int(2) ["name"]=> string(3) "鸡"
-} }

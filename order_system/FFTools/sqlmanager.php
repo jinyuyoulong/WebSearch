@@ -95,19 +95,32 @@ SQL;
 		{
 			self::instance();
 
+			$keys = array_keys($key_values);
+			$values = array_values($key_values);
+
 			$sql ="insert into $mtablename(";
 			if (count($key_values) > 0) {
-				foreach ($key_values as $key => $value) {
-					$sql = $sql.$key;
+
+				for ($i=0; count($keys)-1;$i++) {
+				    if (i == count($keys)-1){
+                        $sql = $sql.$keys[$i];
+                    }else{
+				        $sql = $sql.$keys[$i].',';
+                    }
 				}
 				$sql=$sql.') values(';
-				foreach ($key_values as $key => $value) {
+				for ($i=0; count($values)-1;$i++) {
                     if (empty($value))
                     {
                         echo '插入的数据格式错误';
                         return false;
+                    }else{
+                        if (i == count($keys)-1){
+                            $sql = $sql."'".$values[$i]."'";
+                        }else{
+                            $sql = $sql.$values[$i].',';
+                        }
                     }
-					$sql = $sql."'".$value."'";
 				}
 				$sql = $sql.')';
 			}else{
@@ -116,12 +129,12 @@ SQL;
 
 			echo('sql is: '.$sql.'<br>');
 
-		    $result = @self::$db->exec($sql);
-            if ($result) {
-                return $result;
-            }else{
-                echo self::$db->lastErrorMsg();
-            }
+//		    $result = @self::$db->exec($sql);
+//            if ($result) {
+//                return $result;
+//            }else{
+//                echo self::$db->lastErrorMsg();
+//            }
 
 		}
         /*查询username字段，在某一表中*/
@@ -143,6 +156,7 @@ SQL;
                     $selectedArr[]=$row;
                 }
                 return $selectedArr;
+                @self::$db->close();
             }else{
                 return [];
             }
@@ -152,47 +166,54 @@ SQL;
 		{
 			self::instance();
 			$sql = "select * from $mtablename";
+            echo '<br>'.$sql.'<br>';
 			$result = @self::$db->query($sql);
 
-//			echo $sql;
-			$selectedArr = array();
-			if ($result){
-			    while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-			        $selectedArr[] = $row;
-                }
-
-                return $selectedArr;
-            }else{
-			    return [];
-            }
+//			$selectedArr = array();
+//			if ($result != false){
+//			    while ($row = $result->fetchArray(SQLITE3_ASSOC)){
+//			        array_push($selectedArr,$row);
+//                }
+//
+//                return $selectedArr;
+//            }else{
+//			    return [];
+//            }
 
 		}
 
-		static public function addOrder($uid,$orderInfos)
+		static public function addOrder($uid)
 	    {
 		    self::instance();
 
 		    $now = date('Y-m-d H:i:s');
 		    $sql = "insert into user_order (uid,time) values ('$uid', '$now');";
+		    echo '<br>'.$sql.'<br>';
 		    $result = @self::$db->exec($sql);
 
 
-		    if (!$result) {
-		    	echo(@self::$db->lastErrorMsg());
+		    if ($result == false) {
+		    	echo @self::return_sqlite_error_msg();
 		    }else{
 				echo "insert date done successfully";
 	            $rowid = @self::$db->lastInsertRowID();
-	            if ($rowid) {
-	            	foreach ($orderInfos as $item) {
-	            		echo($item);
-	            	}
-	            }
+	            var_dump($rowid);
+//
+//	            if ($rowid) {
+//	            	foreach ($orderInfos as $item) {
+//	            		echo($item);
+//	            	}
+//	            }
 		    }
 		    
-		   	@self::$db->close();
-            return $result;
+
+		    return $result;
+            @self::$db->close();
 	    }
 
+	    static function return_sqlite_error_msg(){
+		    return 'sqlite error is '.@self::$db->lastErrorMsg();
+        }
 		//end class
 	}
 
