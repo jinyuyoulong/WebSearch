@@ -3,8 +3,17 @@ require_once 'header.php';
 require_once 'head.php';
 require_once '../FFTools/sqlmanager.php';
 
-$result = DBUtile::fetchAllRow('vegetable');
-$categories = DBUtile::fetchAllRow('categorys');
+$sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
+$sqlite = new MyDB();
+
+$result = $sqlite->query($sql);
+
+$categories = array();
+while ($row = $result->fetchArray(SQLITE3_ASSOC)){
+    
+    var_dump($row);
+    echo '<br>';
+}
 
 
 $response = array();

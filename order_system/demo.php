@@ -1,7 +1,6 @@
 <?php
 include_once 'FFTools/sqlmanager.php';
-$sql = 'select * from categorys, vegetable';
-//$sql = 'SELECT * FROM VEGETABLE CROSS JOIN CATEGORYS';
+$sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
 $handler = new MyDB();
 $mutilResult =  $handler->query($sql);
 while ($row = $mutilResult->fetchArray(SQLITE3_ASSOC)){
