@@ -7,44 +7,58 @@ $sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGO
 $sqlite = new MyDB();
 
 $result = $sqlite->query($sql);
-
 $categories = array();
+$sqlResult = array();
 while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-    
-    var_dump($row);
-    echo '<br>';
+
+//    var_dump($row);
+//    $categories[$row['cname']] = $row;
+    $crow['cid'] = $row['category'];
+    $crow['name'] = $row['cname'];
+    $categories[$row['cname']] = $crow;
+
+    array_push( $sqlResult,$row);
 }
 
-
+$categorie_keys = array_keys($categories);
 $response = array();
-foreach ($categories as $row){
-    $rowItems = array();
-    foreach ($result as $item_row){
+foreach ($categorie_keys as $cname){
+    $citems = array();
+    foreach ($sqlResult as $row){
 
-        if ($row['id']  == $item_row['category']){
-            array_push($rowItems, $item_row);
-
+        if ($row['cname'] == $cname) {
+            array_push($citems, $row);
         }
     }
-    $row['items'] = $rowItems;
-    array_push($response, $row);
+    $response[$cname] = $citems;
 }
-
+//echo json_encode($response);
+//var_dump($response);
 echo '<form method="get">';
-foreach ($response as $row){
-    echo "<br>";
-    if (count($row['items']) != 0){
+foreach ($categorie_keys as $ckey){
+//    var_dump($response[$ckey]);
+//    echo "<br>";
+//    echo "<table border='1'><thead>".$ckey."</thead><th>菜名</th><th>数量</th>";
 
-        echo "<table border='1'><thead>".$row['name']."</thead><th>菜名</th><th>数量</th>";
-        foreach ($row['items'] as $item){
+    $subArr = $response[$ckey];
+        if (count($subArr) == 0){
+            continue;
+        }
+        foreach ($subArr as $item){
+//            var_dump($item);
             echo '<tr>';
             echo "<td>".$item['name']."</td><td><input type='text' name='".$item['id']."'</td>";
             echo '</tr>';
         }
-        echo "</table>";
-    }
+
+
+    echo "</table>";
     echo "<br>";
 }
+for ($i=0; $i < count($categorie_keys);$i++){
+
+}
+
 echo '<input class="form-control" type="submit" value="下单">';
 echo '</form>';
 

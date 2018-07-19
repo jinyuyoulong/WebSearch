@@ -17,8 +17,26 @@
       <file leaf-file-name="create-order.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/create-order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="364">
+              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginAction.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/loginAction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="37" lean-forward="true" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -94,8 +112,8 @@
       <find>$insert_result</find>
       <find>$orderInfos</find>
       <find>query</find>
-      <find>$rowid</find>
       <find>unable to open database</find>
+      <find>$rowid</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -137,6 +155,7 @@
         <option value="$PROJECT_DIR$/public/loginAction.php" />
         <option value="$PROJECT_DIR$/FFTools/sqlmanager.php" />
         <option value="$PROJECT_DIR$/demo.php" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/public/create-order.php" />
       </list>
     </option>
@@ -259,12 +278,12 @@
       <updated>1530016725719</updated>
       <workItem from="1530016728752" duration="7844000" />
       <workItem from="1530264846803" duration="42415000" />
-      <workItem from="1531105205550" duration="43021000" />
+      <workItem from="1531105205550" duration="49908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93280000" />
+    <option name="totallyTimeSpent" value="100167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -550,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/loginAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="37" lean-forward="true" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -578,6 +590,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="95" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/loginAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="37" lean-forward="true" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FFTools/db-sqlite.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="824">
@@ -592,17 +625,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="95" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="95" />
+        <state relative-caret-position="233">
+          <caret line="1014" column="19" selection-start-line="1014" selection-start-column="9" selection-end-line="1014" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/create-order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="364">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
