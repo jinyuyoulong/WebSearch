@@ -37,8 +37,8 @@ foreach ($categorie_keys as $cname){
 echo '<form method="get">';
 foreach ($categorie_keys as $ckey){
 //    var_dump($response[$ckey]);
-//    echo "<br>";
-//    echo "<table border='1'><thead>".$ckey."</thead><th>菜名</th><th>数量</th>";
+    echo "<br>";
+    echo "<table border='1'><thead>".$ckey."</thead><th>菜名</th><th>数量</th>";
 
     $subArr = $response[$ckey];
         if (count($subArr) == 0){
@@ -47,7 +47,7 @@ foreach ($categorie_keys as $ckey){
         foreach ($subArr as $item){
 //            var_dump($item);
             echo '<tr>';
-            echo "<td>".$item['name']."</td><td><input type='text' name='".$item['id']."'</td>";
+            echo "<td>".$item['name']."</td><td><input class='inputNumber' type='text' name='".$item['id']."'</td>";
             echo '</tr>';
         }
 
@@ -68,15 +68,21 @@ echo '</form>';
 if (!empty($_GET)) {
     $user_order_paras['uid'] = $_SESSION['uid'];
     $user_order_paras['time'] = time();
-    var_dump($user_order_paras);
+    foreach ($_GET as $key => $value){
+        echo $key.':'.$value;
+        echo '<br>';
+    }
+//    echo json_encode($user_order_paras).'paras';
+
+//    var_dump($user_order_paras);
 
 //    $user_order_result =  DBUtile::insertRowInTable('user_order',$user_order_paras);
-    $user_order_result = DBUtile::addOrder($_SESSION['uid']);
-    if ($user_order_result){
-        var_dump($user_order_result);
-    }else{
-        echo '创建订单失败!';
-    }
+//    $user_order_result = DBUtile::addOrder($_SESSION['uid']);
+//    if ($user_order_result){
+//        var_dump($user_order_result);
+//    }else{
+//        echo '创建订单失败!';
+//    }
 //    $paras = array();
 //    foreach ($_GET as $vegetableId => $value) {
 //        if (!empty($value)) {
