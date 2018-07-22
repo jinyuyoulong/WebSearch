@@ -1,63 +1,101 @@
 <?php
 require_once 'header.php';
 require_once 'head.php';
+
+?>
+
+<form>
+<table border="1">
+            儿童
+            <thead>
+                <th>名称</th>
+                <th>数量</th>
+                <th>单位</th>
+
+            </thead>
+            <tr >
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+
+        </table>
+        <a href="">添加一行</a>
+        <br>
+        <table border="1">
+            成人
+            <thead>
+                <th>名称</th>
+                <th>数量</th>
+                <th>单位</th>
+            </thead>
+            <tr >
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" class="btn">
+    </form>
+<?php  
 require_once '../FFTools/sqlmanager.php';
 
-$sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
-$sqlite = new MyDB();
+// $sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
+// $sqlite = new MyDB();
 
-$result = $sqlite->query($sql);
-$categories = array();
-$sqlResult = array();
-while ($row = $result->fetchArray(SQLITE3_ASSOC)){
+// $result = $sqlite->query($sql);
+// $categories = array();
+// $sqlResult = array();
+// while ($row = $result->fetchArray(SQLITE3_ASSOC)){
 
-//    var_dump($row);
-//    $categories[$row['cname']] = $row;
-    $crow['cid'] = $row['category'];
-    $crow['name'] = $row['cname'];
-    $categories[$row['cname']] = $crow;
+// //    var_dump($row);
+// //    $categories[$row['cname']] = $row;
+//     $crow['cid'] = $row['category'];
+//     $crow['name'] = $row['cname'];
+//     $categories[$row['cname']] = $crow;
 
-    array_push( $sqlResult,$row);
-}
+//     array_push( $sqlResult,$row);
+// }
 
-$categorie_keys = array_keys($categories);
-$response = array();
-foreach ($categorie_keys as $cname){
-    $citems = array();
-    foreach ($sqlResult as $row){
+// $categorie_keys = array_keys($categories);
+// $response = array();
+// foreach ($categorie_keys as $cname){
+//     $citems = array();
+//     foreach ($sqlResult as $row){
 
-        if ($row['cname'] == $cname) {
-            array_push($citems, $row);
-        }
-    }
-    $response[$cname] = $citems;
-}
-//echo json_encode($response);
-//var_dump($response);
-echo '<form method="get">';
-foreach ($categorie_keys as $ckey){
-//    var_dump($response[$ckey]);
-    echo "<br>";
-    echo "<table border='1'><thead>".$ckey."</thead><th>菜名</th><th>数量</th>";
+//         if ($row['cname'] == $cname) {
+//             array_push($citems, $row);
+//         }
+//     }
+//     $response[$cname] = $citems;
+// }
+// //echo json_encode($response);
+// //var_dump($response);
+// echo '<form method="get">';
+// foreach ($categorie_keys as $ckey){
+// //    var_dump($response[$ckey]);
+//     echo "<br>";
+//     echo "<table border='1'><thead>".$ckey."</thead><th>菜名</th><th>数量</th>";
 
-    $subArr = $response[$ckey];
-        if (count($subArr) == 0){
-            continue;
-        }
-        foreach ($subArr as $item){
-//            var_dump($item);
-            echo '<tr>';
-            echo "<td>".$item['name']."</td><td><input class='inputNumber' type='text' name='".$item['id']."'</td>";
-            echo '</tr>';
-        }
+//     $subArr = $response[$ckey];
+//         if (count($subArr) == 0){
+//             continue;
+//         }
+//         foreach ($subArr as $item){
+// //            var_dump($item);
+//             echo '<tr>';
+//             echo "<td>".$item['name']."</td><td><input class='inputNumber' type='text' name='".$item['id']."'</td>";
+//             echo '</tr>';
+//         }
 
 
-    echo "</table>";
-    echo "<br>";
-}
-for ($i=0; $i < count($categorie_keys);$i++){
+//     echo "</table>";
+//     echo "<br>";
+// }
+// for ($i=0; $i < count($categorie_keys);$i++){
 
-}
+// }
 
 echo '<input class="form-control" type="submit" value="下单">';
 echo '</form>';
@@ -98,7 +136,5 @@ if (!empty($_GET)) {
     echo 'not request';
 }
 ?>
-
-
 <?  include_once 'foot.php'; include_once 'footer.php';?>
 

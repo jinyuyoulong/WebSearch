@@ -7,17 +7,56 @@
  */
 include_once '../public/header.php';?>
 <div class="container">
-    order detail of one day
-    <table border="1">
-        <th>school name</th><th>vegetable name</th>
-        <tr>
-            <td>常营</td><td>1</td>
-        </tr>
-        <tr>
-            <td>望京</td><td>3.5</td>
-        </tr>
+<table border="1">
+            儿童
+            <thead>
+                <th>名称</th>
+                <th>数量</th>
+                <th>单位</th>
+                <th>单价</th>
+            </thead>
+            <tr >
+                <td>白菜</td>
+                <td>2</td>
+                <td>斤</td>
+                <td><input type="text" name=""></td>
 
-    </table>
+            </tr>
+            <tr >
+                <td>白菜</td>
+                <td>2</td>
+                <td>斤</td>
+                <td><input type="text" name=""></td>
+            </tr>
+            <tr >
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <a href="">添加一行</a>
+<br>
+<table border="1">
+            成人
+            <thead>
+                <th>名称</th>
+                <th>数量</th>
+                <th>单位</th>
+                <th>单价</th>
+            </thead>
+            <tr >
+                <td>白菜</td>
+                <td>2</td>
+                <td>斤</td>
+                <td>1.3</td>
+            </tr>
+            <tr >
+                <td>白菜</td>
+                <td>2</td>
+                <td>斤</td>
+                <td>1.3</td>
+            </tr>   
+        </table>
 </div>
 
 <? include_once '../public/footer.php'; ?>
