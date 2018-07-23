@@ -1,9 +1,6 @@
 <?php
-
-
 require_once('../public/response.php');
 require_once('../FFTools/sqlmanager.php');
-require_once '../FFTools/db-sqlite.php';
 
 $account = $_POST['account'];
 $pwd = $_POST['password'];
@@ -15,8 +12,8 @@ $arr = array();
 //$result = $db->select('user','*', ['username'=>$account]);
 
 // 查表
-$result = DBUtile::selectRow($account, 'username','user');
-
+//$result =  DBUtile::selectRow($account, 'username','user');
+$result = DBUtile::instance()->query
 
 if (count($result) > 0)
 {

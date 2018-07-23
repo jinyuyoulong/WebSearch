@@ -1,8 +1,9 @@
 <?php  
+    require_once 'dbconfig.php';
 
 	class MyDB extends SQLite3
 	{
-		
+
 		function __construct()
 		{
 
@@ -14,28 +15,45 @@
 			}
 		}	
 	}
-	/**
-	 * if (!$result) {
-		    	echo(@self::$db->lastErrorMsg());
-		    }else{
-				echo "insert date done successfully";
-		    }
-		   	@self::$db->close();
-            return $result;
-	 */
+
+
 	class DBUtile
 	{
-		
+
 		private static $db;
-		private static function instance()
+//		public mysqli;
+
+		function __construct()
+        {
+
+        }
+        static function instance()
 		{
-			if (!self::$db) {
-				self::$db = new MyDB();
-			}else{
+			if (!@self::$db) {
+
+			    try{
+                      @self::$db = new PDO('mysql:host=127.0.0.1;dbname=SchoolOrders','root','333',array(
+                        PDO::ATTR_PERSISTENT => true
+                    ));
+                }catch (PDOException $e){
+                    print "Error!: ".$e->getMessage()."<br>";
+                    die();
+                }
+
+            }else{
 				echo(@self::$db->lastErrorMsg());
 			}
 		}
-
+        /**
+         * 获取配置参数 为空则获取所有配置
+         * @access public
+         * @param  string    $name 配置参数名（支持二级配置 .号分割）
+         * @return mixed
+         */
+        public function config($name = '')
+        {
+            return $this->config->get($name);
+        }
 		/*
 		@name 	name
 		@pwd 	pwd
