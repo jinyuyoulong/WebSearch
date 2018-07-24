@@ -1,13 +1,42 @@
-<?php
-include_once 'FFTools/sqlmanager.php';
-$sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
-$handler = new MyDB();
-$mutilResult =  $handler->query($sql);
-while ($row = $mutilResult->fetchArray(SQLITE3_ASSOC)){
-//    var_dump($row);
-    echo '<br>';
-    echo "categoryid: ".$row['category']." ".$row['cname']."id: ".$row['id'].$row['name'];
-echo '<br>';
-}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<form>
+		<table border="1" id="child">
+        儿童
+        <thead>
+        <th>名称</th>
+        <th>数量</th>
+        <th>单位</th>
 
-?>
+        </thead>
+        <tr class="row1">
+            <td><input type="text" name="name" value="fan"></td>
+            <td><input type="text" name="number" value="3"></td>
+            <td><input type="text" name="unit" value="1"></td>
+        </tr>
+
+    </table>
+    <button>提交</button>
+	</form>
+
+    <script>
+
+        $('button').click(function () {
+            var name = $("table,.child");
+            alert('jquery get data: '+$('from').serialize());
+            // var html = $.ajax({
+            //     type: "POST",
+            //     url: '/',
+            //     data: 'name=fan&age=90',
+            //     async: false
+            // }).responseText;
+        })
+
+</script>
+</body>
+</html>

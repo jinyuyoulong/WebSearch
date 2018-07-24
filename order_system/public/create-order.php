@@ -4,43 +4,75 @@ require_once 'head.php';
 
 ?>
 
-<form>
-<table border="1">
-            儿童
-            <thead>
-                <th>名称</th>
-                <th>数量</th>
-                <th>单位</th>
+<script>
+    function addTableRow(tableId) {
+        if (tableId == 'child'){
+            $tr = $("#child tr:last");
+        }else
+        {
+            $tr = $("#adult tr:last");
+        }
+        $tr.after("<tr><td><input type='text'><td></tr>");
+    }
 
-            </thead>
-            <tr >
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
+</script>
 
-        </table>
-        <a href="">添加一行</a>
-        <br>
-        <table border="1">
-            成人
-            <thead>
-                <th>名称</th>
-                <th>数量</th>
-                <th>单位</th>
-            </thead>
-            <tr >
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
-        </table>
-        <br>
-        <input type="submit" class="btn">
-    </form>
+
+<form method="post">
+    <table border="1" id="child">
+        儿童
+        <thead>
+        <th>名称</th>
+        <th>数量</th>
+        <th>单位</th>
+
+        </thead>
+        <tr class="child row1">
+            <td><input type="text" name="name" ></td>
+            <td><input type="text" name="number"></td>
+            <td><input type="text" name="unit"></td>
+        </tr>
+
+    </table>
+    <input type="button" class="btn" onclick="addTableRow('child')" value="添加一行">
+    <br>
+    <table border="1" id="adult">
+        成人
+        <thead>
+        <th>名称</th>
+        <th>数量</th>
+        <th>单位</th>
+        </thead>
+        <tr class="adult row1">
+            <td id="cell1"><input type="text" name="name"></td>
+            <td><input type="text" name="number"></td>
+            <td><input type="text" name="unit"></td>
+        </tr>
+    </table>
+    <input type="button" class="btn" onclick="addTableRow('adult')" value="添加一行">
+    <br>
+    <br>
+    <button>提交</button>
+<!--    <input type="submit" class="btn" id="submit">-->
+</form>
+<script>
+
+        $('button').click(function () {
+            var name = $("td[id='cell1']").text();
+            alert('jquery get data: '+name);
+            // var html = $.ajax({
+            //     type: "POST",
+            //     url: '/',
+            //     data: 'name=fan&age=90',
+            //     async: false
+            // }).responseText;
+        })
+
+</script>
 <?php  
 require_once '../FFTools/sqlmanager.php';
-
+require_once '../FFTools/db_mysql.php';
+echo json_encode($_POST);
 // $sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
 // $sqlite = new MyDB();
 
