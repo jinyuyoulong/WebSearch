@@ -15,10 +15,16 @@ if ($childCount > 0){
         $subArrItem['number'] = $number;
         $subArrItem['unit'] = $unit;
 
-        // 第一种方式
-        $childArr[$i]['name'] = $name;
-        $childArr[$i]['number'] = $number;
-        $childArr[$i]['unit'] = $unit;
+        if (empty($name)){
+            continue;//去除无效数据
+        }else{
+            array_push($childArr,$subArrItem);
+//            // 第一种方式
+//            $childArr[$i]['name'] = $name;
+//            $childArr[$i]['number'] = $number;
+//            $childArr[$i]['unit'] = $unit;
+        }
+
 
         // 第二种方式
 //        $childArr[] = $subArrItem;
@@ -27,34 +33,87 @@ if ($childCount > 0){
         //竟然需要两个参数, 不直观
 //        array_push($childArr,$subArrItem);
 
-        if (empty($name)){
-            continue;
-        }else{
-//            echo $name.'name';
-        }
+
 //        echo $_POST['child_name'][$i].":".$_POST['child_number'][$i].":".$_POST['child_unit'][$i];
 //        echo '<br>';
     }
 }else{
     echo '无数据，请填写数据在提交';
-    echo "<a href='".$_SERVER[HTTP_REDIRECT]."'>返回</a>";
     echo '<a href="'.$_SERVER[HTTP_REDIRECT].'">返回</a>';
 }
-echo( json_encode( $childArr));
 
 $adultCount = count($_POST['adult_name']);
 if ($adultCount > 0){
     for ($i=0; $i < count($_POST['adult_name']); $i++){
-        $name = $_POST['adult_name'];
+        $name = $_POST['adult_name'][$i];
+        $subArrItem['name'] = $name;
+        $subArrItem['number'] = $_POST['adult_number'][$i];
+        $subArrItem['unit'] = $_POST['adult_unit'][$i];
+
         if (empty($name)){
             continue;
+        }else{
+            array_push($adultArr,$subArrItem);
         }
-        echo $_POST['adult_name'][$i].":".$_POST['adult_number'][$i].":".$_POST['adult_unit'][$i];
-        echo '<br>';
     }
 }
 
-//echo json_encode($_POST);
+/*
+ * 数据库操作
+ * 1. 创建订单
+ * 2. 子表插入
+ * */
+if (count($childArr) > 0){
+    $order_type = 0;
+    createOrderAndInsert($order_type,$childArr);
+}
+
+if (count($adultArr) > 0){
+    $order_type = 1;
+    createOrderAndInsert($order_type, $adultArr);
+}
+
+function createOrderAndInsert($order_type = 0, $dataArr)
+{
+    // 创建订单
+
+    $createChildOrderSQL =  "insert into user_order (uid, order_type) values (".$_SESSION['uid'].",$order_type)";
+    try{
+        $dbh = FFPDO::init();
+        $dbh->setAttribute(FFPDO::ATTR_ERRMODE, FFPDO::ERRMODE_EXCEPTION);
+        $dbh->beginTransaction();
+
+        $dbh->exec($createChildOrderSQL);
+        $lastOrderId = $dbh->lastInsertId();
+
+        if (!$lastOrderId){
+            echo '订单创建失败!';
+            $dbh->rollBack();
+//        exit();
+        }else{
+            foreach ($dataArr as $subItem){
+                $name = $subItem['name'];
+                $number = $subItem['number'];
+                $unit = $subItem['unit'];
+                $createOrderInfoSQL = "insert into simple_orders(orderId,name ,number ,unit) values ($lastOrderId, '$name' ,$number,'$unit')";
+                $dbh->exec($createOrderInfoSQL);
+            }
+            $dbh->commit();
+            if ($order_type == 0){
+                echo '儿童单 下单成功<br>';
+            }else if ($order_type == 1){
+                echo '成人单 下单成功<br>';
+            }
+            echo '<a href="home.php" class="btn">返回</a>';
+        }
+    }catch (PDOException $e){
+        $dbh->rollBack();
+        echo 'Error: '.$e->getMessage();
+    }
+}
+
+
+
 // $sql = 'SELECT * FROM VEGETABLE LEFT OUTER JOIN CATEGORYS WHERE VEGETABLE.CATEGORY=CATEGORYS.ID';
 // $sqlite = new MyDB();
 

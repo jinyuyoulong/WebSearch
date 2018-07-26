@@ -21,7 +21,6 @@ require_once 'head.php';
             $tr.after("<tr><td><input type='text' name='adult_name[]'></td><td><input type='text' name='adult_number[]'></td><td><input type='text' name='adult_unit[]'></td></tr>");
 
         }
-        // $tr.after("<tbody><tr><td><input type='text' name='name_row1'><td></tr></tbody>");
     }
 
 </script>

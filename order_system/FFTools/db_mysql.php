@@ -20,7 +20,6 @@ class FFPDO extends PDO{
             }
 
         }else{
-            echo 'ffpdo have init';
             return self::$_instance;
         }
     }
