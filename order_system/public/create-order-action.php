@@ -5,7 +5,7 @@ require_once '../FFTools/db_mysql.php';
 $childCount = count($_POST['child_name']);
 $childArr = array();
 $adultArr = array();
-
+$dataArr = array();
 if ($childCount > 0){
     for ($i=0; $i < count($_POST['child_name']); $i++){
         $name = $_POST['child_name'][$i];
@@ -14,11 +14,14 @@ if ($childCount > 0){
         $subArrItem['name'] = $name;
         $subArrItem['number'] = $number;
         $subArrItem['unit'] = $unit;
+        $subArrItem['order_type'] = 0;
 
         if (empty($name)){
             continue;//去除无效数据
         }else{
+            $dataArr[] = $subArrItem;
             array_push($childArr,$subArrItem);
+
 //            // 第一种方式
 //            $childArr[$i]['name'] = $name;
 //            $childArr[$i]['number'] = $number;
@@ -49,38 +52,46 @@ if ($adultCount > 0){
         $subArrItem['name'] = $name;
         $subArrItem['number'] = $_POST['adult_number'][$i];
         $subArrItem['unit'] = $_POST['adult_unit'][$i];
-
+        $subArrItem['order_type'] = 1;
         if (empty($name)){
             continue;
         }else{
+            $dataArr[] = $subArrItem;
             array_push($adultArr,$subArrItem);
         }
     }
 }
+
 
 /*
  * 数据库操作
  * 1. 创建订单
  * 2. 子表插入
  * */
-if (count($childArr) > 0){
-    $order_type = 0;
-    createOrderAndInsert($order_type,$childArr);
+//
+//if (count($childArr) > 0){
+//    $order_type = 0;
+//    createOrderAndInsert($order_type,$childArr);
+//}
+//
+//if (count($adultArr) > 0){
+//    $order_type = 1;
+//    createOrderAndInsert($order_type, $adultArr);
+//}
+if (count($dataArr) > 0)
+{
+//    echo json_encode($dataArr);
+    createOrderAndInsert($dataArr);
 }
 
-if (count($adultArr) > 0){
-    $order_type = 1;
-    createOrderAndInsert($order_type, $adultArr);
-}
-
-function createOrderAndInsert($order_type = 0, $dataArr)
+function createOrderAndInsert( $dataArr)
 {
     // 创建订单
 
-    $createChildOrderSQL =  "insert into user_order (uid, order_type) values (".$_SESSION['uid'].",$order_type)";
+    $createChildOrderSQL =  "insert into user_order (uid) values (".$_SESSION['uid'].")";
     try{
         $dbh = FFPDO::init();
-        $dbh->setAttribute(FFPDO::ATTR_ERRMODE, FFPDO::ERRMODE_EXCEPTION);
+        $dbh->setAttribute(FFPDO::ATTR_ERRMODE, FFPDO::ERRMODE_EXCEPTION);//设置pdo属性，抛出error
         $dbh->beginTransaction();
 
         $dbh->exec($createChildOrderSQL);
@@ -92,18 +103,10 @@ function createOrderAndInsert($order_type = 0, $dataArr)
 //        exit();
         }else{
             foreach ($dataArr as $subItem){
-                $name = $subItem['name'];
-                $number = $subItem['number'];
-                $unit = $subItem['unit'];
-                $createOrderInfoSQL = "insert into simple_orders(orderId,name ,number ,unit) values ($lastOrderId, '$name' ,$number,'$unit')";
-                $dbh->exec($createOrderInfoSQL);
+                insertOrderInfo($dbh,$lastOrderId, $subItem );
             }
             $dbh->commit();
-            if ($order_type == 0){
-                echo '儿童单 下单成功<br>';
-            }else if ($order_type == 1){
-                echo '成人单 下单成功<br>';
-            }
+            echo '下单成功<br>';
             echo '<a href="home.php" class="btn">返回</a>';
         }
     }catch (PDOException $e){
@@ -111,5 +114,13 @@ function createOrderAndInsert($order_type = 0, $dataArr)
         echo 'Error: '.$e->getMessage();
     }
 }
+function insertOrderInfo($dbh, $lastOrderId, $subItem){
+    $name = $subItem['name'];
+    $number = $subItem['number'];
+    $unit = $subItem['unit'];
+    $order_type = $subItem['order_type'];
 
+    $createOrderInfoSQL = "insert into simple_orders(orderId,name ,number ,unit, order_type) values ($lastOrderId, '$name' ,$number,'$unit', '$order_type')";
+    $dbh->exec($createOrderInfoSQL);
+}
 ?>
