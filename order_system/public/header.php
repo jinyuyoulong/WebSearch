@@ -12,12 +12,12 @@
 <!--        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>  -->
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <!--        <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+
         <link rel="stylesheet" type="text/css" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css">
         <script src="../vendor/twbs/bootstrap/assets/js/vendor/jquery-slim.min.js"></script>
         <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.js"></script>
-
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
         <title></title>
     </head>
     <body>

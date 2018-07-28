@@ -5,7 +5,10 @@
  * Date: 2018/7/13
  * Time: 上午11:18
  */
-include_once 'header.php';?>
+include_once 'header.php';
+include_once '../FFTools/db_mysql.php';
+
+?>
 
 		<table border="1">
 			儿童

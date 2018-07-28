@@ -1,6 +1,7 @@
 <?php
 require_once('../public/response.php');
 require_once('../FFTools/sqlmanager.php');
+require_once('../FFTools/db_mysql.php');
 
 $account = $_POST['account'];
 $pwd = $_POST['password'];
@@ -8,20 +9,19 @@ $pwd = $_POST['password'];
 $messsage = "";
 $code = 0;
 $arr = array();
-//$db = new sqlite('../FFTools/SchoolOrders.db');
-//$result = $db->select('user','*', ['username'=>$account]);
 
 // 查表
 //$result =  DBUtile::selectRow($account, 'username','user');
-$result = DBUtile::instance()->query
+$dbh = FFPDO::init();
 
-if (count($result) > 0)
+$result = $dbh->query("select * from user where name = '$account'");
+
+if ($result->rowCount() > 0)
 {
-    $firstRow = $result[0];
-    if ($firstRow['pwd'] == md5($pwd)) {
-
+    $firstRow = $result->fetchObject();
+    if ($firstRow->pwd == md5($pwd)) {
         $_SESSION['user'] = $account;
-        $_SESSION['uid'] = $firstRow['uid'];
+        $_SESSION['uid'] = $firstRow->uid;
 
         header("Location: home.php");
 
