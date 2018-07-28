@@ -42,5 +42,9 @@ class FFPDO extends PDO{
 
 
 }
-?>
 
+// $dbh = FFPDO::init();
+// foreach ($dbh->query("select * from user") as $row) {
+//     var_dump($row);
+// }
+?>

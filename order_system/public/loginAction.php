@@ -1,4 +1,7 @@
 <?php
+// session_save_path("/tmp");
+// session_start();
+
 require_once('../public/response.php');
 require_once('../FFTools/sqlmanager.php');
 require_once('../FFTools/db_mysql.php');
@@ -20,9 +23,9 @@ if ($result->rowCount() > 0)
 {
     $firstRow = $result->fetchObject();
     if ($firstRow->pwd == md5($pwd)) {
-        $_SESSION['user'] = $account;
+        $_SESSION['user'] = $account; 
         $_SESSION['uid'] = $firstRow->uid;
-
+        // var_dump($_SESSION);
         header("Location: home.php");
 
     }else{
@@ -35,4 +38,3 @@ if ($result->rowCount() > 0)
 }
 
 ?>
-

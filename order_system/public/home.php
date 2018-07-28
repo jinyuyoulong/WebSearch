@@ -1,11 +1,15 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+// session_save_path("/tmp");
+// session_start();
+// phpinfo();
+?>
 
 <div class="container">
 
     <div class="row"><div class="span3">
             <h4>个人信息</h4>
             <br>
-            <?php
+            <?php            
                 echo '你好，'.$_SESSION['user'];
             ?>
         </div>

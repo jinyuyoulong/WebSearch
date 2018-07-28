@@ -80,7 +80,7 @@ if ($adultCount > 0){
 //}
 if (count($dataArr) > 0)
 {
-//    echo json_encode($dataArr);
+   // echo json_encode($dataArr);
     createOrderAndInsert($dataArr);
 }
 
