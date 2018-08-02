@@ -5,10 +5,10 @@
  * Date: 2018/7/13
  * Time: 上午11:18
  */
-include_once 'header.php';
-require_once '../FFTools/db_mysql.php';
 
-echo '<div class="container">';
+include_once 'header.php';
+include_once 'head.php';
+require_once '../FFTools/db_mysql.php';
 
 
 $orderId = $_GET['oId'];
@@ -114,9 +114,8 @@ function makeAdultTable($adultOrders){
 }
 
 echo '<a href="" class="btn">导出</a>';
-echo '</div>';
 
 ?>
-
+<? include_once 'foot.php';?>
 <?php include_once 'footer.php'?>
 

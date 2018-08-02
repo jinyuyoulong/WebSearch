@@ -5,12 +5,15 @@
  * Date: 2018/7/13
  * Time: 上午11:16
  */
+
+//订单时间列表
 include_once 'header.php';
+include_once 'head.php';
+
 require_once '../FFTools/db_mysql.php';
 
 $timeArr = array();
 
-echo '<div class="container">';
 echo '<table border="1">';
         echo '<tr>';
             echo '<th>时间</th>';
@@ -24,7 +27,7 @@ foreach ($dbh->query('select * from user_order')->fetchAll() as $row){
     $datetime = date('Y-m-d',$datetime);
     $orderId = $row['id'];
         echo '<tr >';
-            $dd = sprintf('<td><a href="user_order_detail.php?oId=%d">%s</a> </td>',$orderId,$datetime);
+            $dd = sprintf('<td><a href="user_order_detail.php?oId=%d">下单时间：%s</a> </td>',$orderId,$datetime);
             echo $dd;
 //            echo '<td><a href="user_order_detail.php">$row["create_time"]</a> </td>';
         echo '</tr>';
@@ -39,7 +42,6 @@ foreach ($dbh->query('select * from user_order')->fetchAll() as $row){
     <label>终止时间</label><input type="date" name="endDate" max="2018-07-27" id="endDate"><br>
     <input type="submit" value="导出单位时间账单">
 </form>
-</div>
 <script>
     // $('input[name="endDate"]').change(function(){
     //     var myDate = new Date();  //获取当前时间对象，精确到当前的时、分、秒
@@ -75,4 +77,5 @@ foreach ($dbh->query('select * from user_order')->fetchAll() as $row){
         // document.getElementById('endDate').setAttribute("max",getDate())
     }
 </script>
+<?php include_once 'foot.php';?>
 <?php include_once 'footer.php'?>

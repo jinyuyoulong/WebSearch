@@ -24,7 +24,7 @@ require_once 'head.php';
     }
 
 </script>
-
+<div class="container">
 
 <form method="post" action="create-order-action.php">
     <table border="1" id="table_child">
@@ -74,6 +74,6 @@ require_once 'head.php';
         console.log("dfa");
     }
 </script>
-
+</div>
 <?  include_once 'foot.php'; include_once 'footer.php';?>
 

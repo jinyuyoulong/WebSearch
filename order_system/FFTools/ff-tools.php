@@ -9,6 +9,10 @@ class FFTools
 	{
 	    echo $msg."<a href='".$url."'>返回</a>" ;
 	}
+
+	static public function formateDate($date){
+	    return date('Y-m-d',strtotime( $date));
+    }
 }
 
 ?>
