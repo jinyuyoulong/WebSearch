@@ -12,8 +12,6 @@ require_once '../FFTools/db_mysql.php';
 
 
 $orderId = $_GET['oId'];
-//echo $orderId.' orderid';
-
 
 $dbh = FFPDO::init();
 $sql = 'select * from simple_orders where orderId='.$dbh->quote($orderId);

@@ -5,18 +5,29 @@
  * Date: 2018/7/13
  * Time: 上午11:28
  */
-include_once '../public/header.php';?>
+include_once '../public/header.php';
+include_once 'admin-head.php';
+require_once '../FFTools/db_mysql.php';
+
+$dbh = FFPDO::init();
+$result = $dbh->query('select school_name, uid from user where user_type=1')->fetchAll();
+
+?>
 <table border="1">
 	<thead>
 		<th>学校</th>
 
 	</thead>
-	<tr >
-		<td><a href="admin-order-detail.php">晓得学校</a> </td>
-	</tr>
-	<tr >
-		<td><a href="user_order_detail.php">深深学校</a> </td>
-	</tr>
+    <?php
+        foreach ($result as $item){
+            $name = $item[0];
+            $id = $item[1];
+            echo '<tr >';
+            echo "<td><a href='admin-order-detail.php?oId=$id'>$name</a> </td>";
+            echo '</tr>';
+        }
+
+    ?>
 </table>
 <hr>
             <br>
@@ -24,4 +35,6 @@ include_once '../public/header.php';?>
             <br>
             <a href="admin-jinhuodan.php">单日进货单</a>
 
-<? include_once '../public/footer.php';?>
+<?
+include_once 'admin-foot.php';
+include_once '../public/footer.php';?>
