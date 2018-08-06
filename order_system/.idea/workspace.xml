@@ -86,7 +86,7 @@
       <file leaf-file-name="admin-order-detail.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/admin-order-detail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="-1707">
               <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
             </state>
           </provider>
@@ -312,12 +312,12 @@
       <workItem from="1532656866008" duration="204000" />
       <workItem from="1532659272554" duration="152000" />
       <workItem from="1532659978673" duration="205000" />
-      <workItem from="1532660376984" duration="38713000" />
+      <workItem from="1532660376984" duration="39143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195716000" />
+    <option name="totallyTimeSpent" value="196146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -722,7 +722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/admin-order-detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="-1707">
           <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
         </state>
       </provider>
