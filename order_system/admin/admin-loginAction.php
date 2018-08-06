@@ -20,13 +20,19 @@ $result = $dbh->query("select * from user where name = '$account'");
 
 if ($result->rowCount() > 0)
 {
+    
     $firstRow = $result->fetchObject();
     if ($firstRow->pwd == md5($pwd)) {
         $_SESSION['user'] = $account;
         $_SESSION['uid'] = $firstRow->uid;
         // var_dump($_SESSION);
-        header("Location: admin-home.php");
-
+        if ($firstRow->user_type == 2) {
+            header("Location: admin-home.php");    
+        }else{
+            $messsage = '登录失败，没有权限';
+            echo $messsage."<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";
+        }
+        
     }else{
         $messsage = '密码错误';
         echo $messsage."<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";

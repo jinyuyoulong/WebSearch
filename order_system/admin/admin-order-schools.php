@@ -10,7 +10,13 @@ include_once 'admin-head.php';
 require_once '../FFTools/db_mysql.php';
 
 $dbh = FFPDO::init();
-$result = $dbh->query('select school_name, uid from user where user_type=1')->fetchAll();
+// $theOrders = $dbh->query('select * from user right outer join user_order on user.uid=user_order.uid')->fetchAll();//右联
+$theOrders = $dbh->query('select * from user inner join user_order on user.uid=user_order.uid')->fetchAll();//内联
+// $theOrders = $dbh->query('select * from user_order inner join user on user_order.uid=user.uid')->fetchAll();//内联
+// foreach ($theOrders as $row ) {
+//     echo json_encode($row).'<br>';
+// }
+// $result = $dbh->query('select school_name, uid from user where user_type=1')->fetchAll();
 
 ?>
 <table border="1">
@@ -19,9 +25,9 @@ $result = $dbh->query('select school_name, uid from user where user_type=1')->fe
 
 	</thead>
     <?php
-        foreach ($result as $item){
-            $name = $item[0];
-            $id = $item[1];
+        foreach ($theOrders as $item){
+            $name = $item['school_name'];
+            $id = $item['id'];
             echo '<tr >';
             echo "<td><a href='admin-order-detail.php?oId=$id'>$name</a> </td>";
             echo '</tr>';

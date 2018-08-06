@@ -24,11 +24,12 @@ foreach ($dbh->query($sql)->fetchAll() as $row){
         $adultOrders[] = $row;
     }
 }
-
+echo "<form method='post' action='admin-order-detail-add-price.php'>";
 makeChildTable($childOrders);
 echo '<br>';
 makeAdultTable($adultOrders);
-
+echo "<input type='submit' value='添加价格'>";
+echo "</form>";
 //==================== fuction ==========================
 function makeChildTable($childOrders){
     $orderTotal = 0;
@@ -36,7 +37,7 @@ function makeChildTable($childOrders){
     echo '<table border="1" class="table table-condensed">';
     echo '<thead>';
     echo '<tr>';
-    echo '<th>名称</th><th>数量</th><th>单位</th><th>单价</th><th>合计</th>';
+    echo '<th>名称</th><th>数量</th><th>单位</th><th>单价</th>';
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -47,27 +48,26 @@ function makeChildTable($childOrders){
         $name = $row['name'];
         $number = $row['number'];
         $unit = $row['unit'];
+        $orderInfoId = $row['id'];
+        $orderInfoPriceKey = $orderInfoId.'_price';
+
         if (empty($row['price'])){
-            $price = '暂无';
-            $productTotalPrice = '暂无';
+            $price = '';
         }else{
             $price = $row['price'];
-            $productTotalPrice = $number * $price;
-            $orderTotal = $orderTotal + $productTotalPrice;
-        }
+          }
 
         echo '<tr >';
         echo '<td>'.$name.'</td>';
         echo "<td>".$number."</td>";
         echo "<td>".$unit."</td>";
-        echo "<td>".$price."</td>";
-        echo "<td>".$productTotalPrice."</td>";
+        echo "<td>"."<input type='text' name='$orderInfoPriceKey' value='$price'>"."</td>";
         echo '</tr>';
     }
 
     echo '</tbody>';
 
-    echo '<caption>儿童菜单 合计：'.$orderTotal.'</caption>';
+    echo '<caption>儿童菜单 </caption>';
 
     echo '</table>';
 }
@@ -77,87 +77,33 @@ function makeAdultTable($adultOrders){
 
     echo '<table border="1" class="table">';
     echo '<tr>';
-    echo '<th>名称</th><th>数量</th><th>单位</th><th>单价</th><th>合计</th>';
+    echo '<th>名称</th><th>数量</th><th>单位</th><th>单价</th>';
     echo '</tr>';
 
     foreach ($adultOrders as $row) {
         $name = $row['name'];
         $number = $row['number'];
         $unit = $row['unit'];
+        $orderInfoId = $row['id'];
+        $orderInfoPriceKey = $orderInfoId.'_price';
         if (empty($row['price'])){
-            $price = '暂无';
-            $productTotalPrice = '暂无';
+            $price = '';
         }else{
             $price = $row['price'];
-            $productTotalPrice = $number * $price;
-            $orderTotal = $orderTotal + $productTotalPrice;
-
         }
 
         echo '<tr >';
         echo '<td>'.$name.'</td>';
         echo "<td>".$number."</td>";
         echo "<td>".$unit."</td>";
-        echo "<td>".$price."</td>";
-        echo "<td>".$productTotalPrice."</td>";
+        echo "<td>"."<input type='text' name='$orderInfoPriceKey' value='$price'>"."</td>";
         echo '</tr>';
     }
-    echo '<caption>成人菜单 合计：'.$orderTotal.'</caption>';
+    echo '<caption>成人菜单</caption>';
 
     echo '</table>';
 
 }
-
 ?>
-<table border="1">
-            儿童
-            <thead>
-                <th>名称</th>
-                <th>数量</th>
-                <th>单位</th>
-                <th>单价</th>
-            </thead>
-            <tr >
-                <td>白菜</td>
-                <td>2</td>
-                <td>斤</td>
-                <td><input type="text" name=""></td>
-
-            </tr>
-            <tr >
-                <td>白菜</td>
-                <td>2</td>
-                <td>斤</td>
-                <td><input type="text" name=""></td>
-            </tr>
-            <tr >
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
-        </table>
-        <a href="">添加一行</a>
-<br>
-<table border="1">
-            成人
-            <thead>
-                <th>名称</th>
-                <th>数量</th>
-                <th>单位</th>
-                <th>单价</th>
-            </thead>
-            <tr >
-                <td>白菜</td>
-                <td>2</td>
-                <td>斤</td>
-                <td>1.3</td>
-            </tr>
-            <tr >
-                <td>白菜</td>
-                <td>2</td>
-                <td>斤</td>
-                <td>1.3</td>
-            </tr>   
-        </table>
 
 <? include_once 'admin-foot.php';include_once '../public/footer.php'; ?>
