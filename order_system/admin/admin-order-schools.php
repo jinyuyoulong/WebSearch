@@ -9,9 +9,14 @@ include_once '../public/header.php';
 include_once 'admin-head.php';
 require_once '../FFTools/db_mysql.php';
 
+$orderDate = $_GET['orderDate'];
+
 $dbh = FFPDO::init();
+$sql = "select * from user_order inner join user on user_order.uid=user.uid where to_days(user_order.create_time)=to_days('$orderDate')";
+//echo $sql.'<br>';
 // $theOrders = $dbh->query('select * from user right outer join user_order on user.uid=user_order.uid')->fetchAll();//右联
-$theOrders = $dbh->query('select * from user inner join user_order on user.uid=user_order.uid')->fetchAll();//内联
+$theOrders = $dbh->query($sql)->fetchAll();//内联
+
 // $theOrders = $dbh->query('select * from user_order inner join user on user_order.uid=user.uid')->fetchAll();//内联
 // foreach ($theOrders as $row ) {
 //     echo json_encode($row).'<br>';
@@ -28,8 +33,9 @@ $theOrders = $dbh->query('select * from user inner join user_order on user.uid=u
         foreach ($theOrders as $item){
             $name = $item['school_name'];
             $id = $item['id'];
+
             echo '<tr >';
-            echo "<td><a href='admin-order-detail.php?oId=$id'>$name</a> </td>";
+            echo "<td><a href='admin-order-detail.php?oId=$id&orderDate=$orderDate'>$name</a> </td>";
             echo '</tr>';
         }
 
@@ -45,4 +51,5 @@ $theOrders = $dbh->query('select * from user inner join user_order on user.uid=u
 
 <?
 include_once 'admin-foot.php';
-include_once '../public/footer.php';?>
+include_once '../public/footer.php';
+?>

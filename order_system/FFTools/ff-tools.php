@@ -5,9 +5,12 @@
 class FFTools
 {
 	
-	public function tostUI($msg='', $url='')
+	static public function tostUI($msg='', $url='')
 	{
-	    echo $msg."<a href='".$url."'>返回</a>" ;
+//	    echo $msg."<a href='".$url."'>返回</a>" ;
+        echo '<script language="JavaScript">';
+        echo "alert($msg);location.href='$url';"."</script>";
+
 	}
 
 	static public function formateDate($date){

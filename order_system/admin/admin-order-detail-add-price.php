@@ -35,13 +35,13 @@ $sql = "update simple_orders set price = case id".$subSql;
  if ($count > 0){
      $dbh->commit();
      echo '更新成功'.'<br>';
-     echo '<a href="admin-home.php">返回</a>';
-//     echo '<a href='.'".$_SERVER["HTTP_REFERER"]."'.'></a>';
+//     echo '<a href="admin-order-schools.php?orderDate=">返回</a>';
+     echo '<a href='.'".$_SERVER["HTTP_REFERER"]."'.'></a>';
  }else{
      $dbh->rollBack();
      echo '没有需要更新的数据'.'<br>';
 //     echo '<a href="admin-home.php">返回</a>';
-     echo '<a href="'.'.$_SERVER["HTTP_REFERER"].'.'">返回</a>';
+     echo $messsage."<a href='".$_SERVER["HTTP_REFERER"]."'>返回</a>";
  }
 
 ?>
