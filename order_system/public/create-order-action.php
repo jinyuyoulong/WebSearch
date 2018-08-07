@@ -91,6 +91,7 @@ function createOrderAndInsert( $dataArr)
     $createChildOrderSQL =  "insert into user_order (uid) values (".$_SESSION['uid'].")";
     try{
         $dbh = FFPDO::init();
+        //开启 事务
         $dbh->setAttribute(FFPDO::ATTR_ERRMODE, FFPDO::ERRMODE_EXCEPTION);//设置pdo属性，抛出error
         $dbh->beginTransaction();
 

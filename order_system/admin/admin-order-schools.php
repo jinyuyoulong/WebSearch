@@ -36,10 +36,12 @@ $theOrders = $dbh->query('select * from user inner join user_order on user.uid=u
     ?>
 </table>
 <hr>
-            <br>
-            <a href="admin-lihuodan.php">单日理货单</a>
-            <br>
-            <a href="admin-jinhuodan.php">单日进货单</a>
+
+<br>
+<a href="admin-jinhuodan.php">单日进货单</a>
+<br>
+<a href="admin-lihuodan.php">单日理货单</a>
+
 
 <?
 include_once 'admin-foot.php';
