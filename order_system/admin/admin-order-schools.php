@@ -44,12 +44,12 @@ $theOrders = $dbh->query($sql)->fetchAll();//内联
 <hr>
 
 <br>
-<a href="admin-jinhuodan.php">单日进货单</a>
+<a href="admin-jinhuodan.php?orderDate=<?php echo $orderDate;?>">单日进货单</a>
 <br>
-<a href="admin-lihuodan.php">单日理货单</a>
+<a href="admin-lihuodan.php?orderDate=<?php echo $orderDate;?>">单日理货单</a>
 
 
-<?
+<?php
 include_once 'admin-foot.php';
 include_once '../public/footer.php';
 ?>
