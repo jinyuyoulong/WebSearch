@@ -16,7 +16,7 @@ $sql = "select * from user_order inner join user on user_order.uid=user.uid wher
 //echo $sql.'<br>';
 // $theOrders = $dbh->query('select * from user right outer join user_order on user.uid=user_order.uid')->fetchAll();//右联
 $theOrders = $dbh->query($sql)->fetchAll();//内联
-
+//var_dump($theOrders);
 // $theOrders = $dbh->query('select * from user_order inner join user on user_order.uid=user.uid')->fetchAll();//内联
 // foreach ($theOrders as $row ) {
 //     echo json_encode($row).'<br>';

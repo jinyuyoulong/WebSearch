@@ -45,3 +45,4 @@ $sql = "update simple_orders set price = case id".$subSql;
  }
 
 ?>
+
