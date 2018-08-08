@@ -1,6 +1,6 @@
 <?php
 require_once '../FFTools/db_mysql.php';
-
+// 暂时停止使用，改用detail的当前页处理
 $priceArr = array();
 
 foreach ($_POST as $key => $value) {

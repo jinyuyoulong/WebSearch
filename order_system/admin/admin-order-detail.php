@@ -150,10 +150,10 @@ if (!empty($_POST)){
     $count = $dbh->exec($sql);
     if ($count > 0){
         $dbh->commit();
-        $url = 'admin-order-schools.php?';
-        FFTools::tostUI('更新成功','admin-order-schools.php');
+        // FFTools::tostUI('更新成功','admin-order-schools.php');
         echo '<script language="javascript">';
-        echo 'alert("更新成功")';
+        echo 'alert("更新成功");';
+        echo "parent.location.href='admin-order-schools.php?orderDate=$orderTime'";
         echo '</script>';
 //
 //        echo '更新成功'.'<br>';
@@ -161,7 +161,11 @@ if (!empty($_POST)){
 //        echo '<a href='.'".$_SERVER["HTTP_REFERER"]."'.'></a>';
     }else{
         $dbh->rollBack();
-        FFTools::tostUI('没有需要更新的数据',$_SERVER["HTTP_REFERER"]);
+        // FFTools::tostUI('没有需要更新的数据',$_SERVER["HTTP_REFERER"]);
+        echo '<script language="javascript">';
+        echo 'alert("没有需要更新的数据");';
+        echo "parent.location.href='admin-order-schools.php?orderDate=$orderTime'";
+        echo '</script>';
 //        echo '<script language="javascript">';
 //        echo 'alert("message successfully sent")';
 //        echo '</script>';
