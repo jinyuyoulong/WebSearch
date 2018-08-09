@@ -1,8 +1,0 @@
-{
-  "name" : "order_system",
-  "version" : "0.1",
-  "repositories" : [ {
-    "type" : "composer",
-    "url" : "https://packagist.org/"
-  } ]
-}
