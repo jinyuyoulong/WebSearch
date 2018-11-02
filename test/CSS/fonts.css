@@ -1,0 +1,14 @@
+.test-font{
+	font-size: 2em;
+	font-family: Bookman, serif;
+}
+
+.chinese-font{
+	font-size: 2em;
+	font-family: "方正姚体";
+}
+
+.english-font{
+	font-size: 2em;
+	font-family: Times;
+}

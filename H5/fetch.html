@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js fetch instead xhr</title>
+	<!-- <link href="../JavaScript/fetch.js"> -->
+</head>
+<body>
+fetch is
+<button onclick="fetchClick()">click</button>
+</body>
+
+<script >
+	function fetchClick(){
+		fetch('http://wp.v5u.win/wp-json/wp/v2').then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				console.log(data);
+			}).catch(function (e) {
+				console.log("oops, error");
+			});
+	}
+	
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>title</title>
+	<meta charset="utf-8">
+	<style>
+		code{background-color: lightgray}
+	</style>
+</head>
+<body>
+	<p>
+		<code>i=0;i++</code>
+	</p>
+
+   
+	<a href="javascript:;" onclick="javascript:ToUrl('http://www.g.cn');">
+	location.href不跳转测试1</a><br>
+
+	<a href="javascript:void(0);"
+	 onclick="javascript:ToUrl('http://www.g.cn');" target='_blank'>
+	location.href不跳转测试2</a><br>
+
+	<a href="javascript:void(0);"
+	 onclick="javascript:ToUrl('http://www.g.cn');return false;">
+	location.href不跳转测试3</a><br>
+
+	<a href="#" onclick="javascript:ToUrl('http://www.g.cn');">
+	location.href不跳转测试4</a><br>
+
+	<a href="###" onclick="javascript:ToUrl('http://www.g.cn');">
+	location.href不跳转测试5</a><br>
+
+</body>
+
+<script>
+
+function ToUrl(x)   
+{   
+  location.href=x;   
+}
+
+</script>
+</html>

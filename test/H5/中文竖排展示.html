@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>中文竖排展示</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		font-family: "microsoft yahei";
+	}
+
+	table{
+		border-collapse: collapse;
+		margin: 30px 0;
+	}
+
+	table th{
+		background-color: #CEDAEE;
+	}
+
+	table th,table td{
+		border: 1px solid #DDD;
+	}
+
+	.box{
+		width: 990px;
+		margin: 20px auto;
+		padding-left: 30px;
+	}
+	.box ul{
+		margin-top: 20px;
+		list-style-position: inside;
+		display: inline-block;
+		*display: inline;
+		*zoom:1;
+		border: 1em;
+		white-space: pre-wrap;
+		vertical-align: top;
+	}
+
+	.box li{
+
+	}
+	.wmlr{
+		-webkit-writing-mode: vertical-lr;
+		-ms-writing-mode: tb-lr;
+		*writing-mode: tb-lr;
+		unicode-bidi: bidi-override;
+	}
+	.write-mode-right-left{
+		-webkit-writing-mode:vertical-rl;
+		-ms-writing-mode: tb-rl;
+		*writing-mode: tb-rl;
+		unicode-bidi: bidi-override;
+	}
+	.rtl{
+		direction: rtl;
+	}
+	</style>
+</head>
+<body>
+<div class="box">
+	<ul class="write-mode-right-left">
+		<li>竖排从左到右，从上到下</li>
+		<li>简体中文</li>
+		举例来说，照老子、庄子讲，生而有死是自然过程，人应当平静地顺着这个自然过程。但是道教的主要教义则是如何避免死亡的原理和方术，显然是反乎自然而行的。
+		<br/>
+	</ul>
+	
+	<ul class="wmlr">
+		<li>竖排从left到right，从上到下</li>
+		<li>元素的高度、宽度、行高以及顶和底边距都可设置。</li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="div1">
+<p id="p1">这是一个段落。</p>
+<p id="p2">这是另一个段落。</p>
+</div>
+
+<script>
+var para=document.createElement("p");
+var node=document.createTextNode("这是新段落。");
+para.appendChild(node);
+
+var element=document.getElementById("div1");
+element.appendChild(para);
+
+var ele = document.createElement("div");
+var eleNode = document.createTextNode("new div");
+ele.appendChild(eleNode);
+element.appendChild(ele)
+
+</script>
+
+</body>
+</html>
