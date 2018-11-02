@@ -1,0 +1,31 @@
+{extend name="base" /}
+{block name="title"}
+index block title
+{/block}
+
+{block name="menu"}菜单 index{/block}
+
+{block name="main"}
+
+
+<div>
+    <h1 class="h3 mb3 font-weight-normal">欢迎登陆幼儿园蔬果下单系统</h1>
+    <br>
+    <!--h1干涉form提交-->
+    <form action="loginAction.php" method="post" class="form-signin" _lpchecked="1">
+
+        <input type="text" name="account"  placeholder="用户名" required autofocus/><br>
+        <br>
+        <input type="password" name="password" placeholder="密  码" />
+        <br>
+        <br>
+        <input type="submit" value="登录" class="btn">
+    </form>
+
+    <br>
+    <a class="btn" href="register.php" >注册</a>
+    <a class="btn" href="" > 找回密码</a>
+    <a class="btn" href="../admin/admin-login.php" >后台管理</a>
+</div>
+
+{/block}

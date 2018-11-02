@@ -1,0 +1,41 @@
+{extend name="base" /}
+{block name="title"}
+index block title
+{/block}
+
+{block name="menu"}菜单 index{/block}
+
+{block name="main"}
+
+<div style="padding:30px;">
+    <form  method="post" action="create">
+        <div style="align-items: right">
+            <label class="label-text" for="name">用户名:</label>
+            <input type="text" name="name" class="text-l w-40" placeholder="用户名:"><br>
+            <label class="label-text" for="password">密&nbsp;码:</label>
+            <input type="password" name="password" class="text-l w-40" placeholder="密&nbsp;码:"><br>
+            <label class="label-text" for="schoolName">学校名称:</label>
+            <input type="text" id="schoolName" name="schoolName" class="text-l w-40" placeholder="学校名称:">
+            <br>
+            <label class="label-text" for="email">邮箱地址:</label>
+            <input type="text" name="email" id="email" class="text-l w-40" placeholder="邮件地址" >
+            <br>
+        </div>
+
+        <br>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="userType" value=1  id="userType1" checked>
+            <label class="form-check-label" for="userType1" >用户</label>
+        </div>
+        <div class="form-check ">
+            <input class="form-check-input" type="radio" name="userType" value=2 id="userType2">
+            <label class="form-check-label" for="userType2" >管理员</label>
+        </div>
+
+        <br>
+        <input type="submit" value="注册" style="width: 200px">
+    </form>
+</div>
+
+{/block}
