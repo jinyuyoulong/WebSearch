@@ -10,6 +10,7 @@ namespace app\common\model;
 
 use think\Model;
 
+//common 不允许URL访问 提供公共模块
 class User extends Model
 {
     protected $pk = 'uid';
