@@ -7,4 +7,9 @@ class Index
         // dump(config());
         return 'admin index page action';
     }
+
+    public function test()
+    {
+    	return 'admin index page test action';
+    }
 }

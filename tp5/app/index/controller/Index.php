@@ -22,6 +22,11 @@ class Index
 
     public function demo()	
     {
-    	dump(config());
+    	return 'demo';;
+    }
+
+    public function info($id)
+    {
+        return {$id};
     }
 }
