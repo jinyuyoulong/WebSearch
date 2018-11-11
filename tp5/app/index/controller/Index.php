@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+use think\Config;
 
 class Index
 {
@@ -9,8 +10,11 @@ class Index
 	}
     public function index()
     {
-    	config('indexAction','index');
-       dump(config());
+    	// $res =  Config::get(); //建议此用法
+    	// $res = config();
+
+    	$res = Config::get('app_namespace');
+       dump($res);
        
     }
 
