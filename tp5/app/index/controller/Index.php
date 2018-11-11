@@ -1,25 +1,21 @@
 <?php
 namespace app\index\controller;
 use think\Config;
-use think\Env;
+use think\Request;
 
 class Index
 {
-    public function index()
+    public function index(Request $request)
     {       
-        return 'index index page';
+        $response = [
+            'code' => 200,
+            'result' => [
+                'list'=>[1,2,3,4,5]
+            ]
+        ];
+
+        Config::set('default_return_type','xml');
+        return $response;
     }
 
-    public function demo()	
-    {
-    	return 'demo';
-    }
-
-    public function info($id)
-    {
-        // echo url('index/index/index', ["id"=>10])."<br>";
-        echo url('index/index/info', ["id"=>10])."<br>";
-
-        return "{$id}";
-    }
 }
