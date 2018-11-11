@@ -1,7 +1,6 @@
 <?php
+use think\Env;
 
 return [
-    'app_status'=> "home",//开发环境配置
-    'user_author' => "fan",
-    'user_email' => "sss@qq.com",
+    'app_status'=> Env::get('app_status','dev'),
 ];

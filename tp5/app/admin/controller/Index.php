@@ -4,6 +4,7 @@ class Index
 {
     public function index()
     {
-        dump(config());
+        // dump(config());
+        return 'admin index page action';
     }
 }

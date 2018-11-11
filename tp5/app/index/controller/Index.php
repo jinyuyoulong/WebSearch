@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Config;
+use think\Env;
 
 class Index
 {
@@ -10,12 +11,13 @@ class Index
 	}
     public function index()
     {
-    	// $res =  Config::get(); //建议此用法
-    	// $res = config();
 
-    	$res = Config::get('app_namespace');
-       dump($res);
-       
+       // dump($_ENV['PHP_EMAI']);
+        // $res = Env::get('emails', 'ddd'); //没有配置的话，默认配置ddd
+        // $res = Env::get('database.host');// ==  Env::get('database_host')
+        // dump($res);
+       // dump($_ENV);
+        dump(config());
     }
 
     public function demo()	
