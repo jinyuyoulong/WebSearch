@@ -8,31 +8,27 @@ class Index extends Controller
     public function index()
     {
         $db = Db::name('user');
-        # insert 返回值是影响记录的行数 插入数
-        # insertGetId 返回自增ID
-        # insertAll 批量插入 返回插入数量
-        
-//        $result = $db->insert([
-//           'username' => 'imooc_01',
-//           'password'   => md5('imooc_01'),
-//            'email' =>  'imooc_01@qq.com'
+        # update 返回影响的行数量
+//        $result = $db->where([
+//            'id'=>2
+//        ])->update([
+//           'username' => 'fan',
+//            'email' => 'fan@qq.com'
 //        ]);
 
-//        $result = $db->insertGetId([
-//            'username' => 'imooc_03',
-//            'password'   => md5('imooc_03'),
-//            'email' =>  'imooc_03@qq.com'
-//        ]);
-        $data = [];
-        for ($i = 0; $i<10;$i++)
-        {
-            $data[] = [
-                'username' => "imooc_03_{$i}",
-            'password'   => md5("imooc_03_{$i}"),
-            'email' =>  "imooc_03_{$i}@qq.com"
-            ];
-        }
-        $result = $db->insertAll($data);
+        # setField 每次只更新一个字段，返回影响的行数量
+//        $result = $db->where(['id'=>3])->setField('username','jin');
+
+        # setInc    字段自增，默认自增1，返回影响的行数量
+//        $result = $db->where([
+//            'id'=>1,
+//        ])->setInc('num',5);
+
+        # setDec 自减
+        $result = $db->where([
+            'id'=>1
+        ])->setDec('num',5);
+
         dump($result);
 
     }
