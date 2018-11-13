@@ -9,33 +9,35 @@
 </head>
 <body>
     <h1>这里是index /view /index/index.html</h1>
+    <!--eq equal-->
+    {eq name="a" value="10"}
+        <p>true</p>
+    {else/}
+        <p>false</p>
+    {/eq}
 
-    <!--volist-->
-    {volist name='list' id="data" offset="0" length="3" mod="2" empty="$empty" key="s"}
-    {/*
-    mod 当前循环次数 取余
-    length 循环次数
-    offset 取值下标
-    key 当前循环次数
-    */}
-    <!--<p>{$mod}</p>-->
-    <!--<p>{$data.name}</p>-->
-    <!--<p>{$mod}:{$s}:{$data.name}</p>-->
-    {/volist}
+    {equal name="a" value="$b"}
+    <p>true</p>
+    {else/}
+    <p>false</p>
+    {/equal}
 
-    <!--foreach-->
-    <!--{foreach list as $vo}-->
-    {foreach name="list" item="vo" key="s"}
-    {/* key 数组下标 */}
-    <!--<p>{$s}:{$vo.name} :{$vo.email}</p>-->
-    {/foreach}
+    <!--neq notequal-->
+    {neq name="a" value="10"}
+    <p>false</p>
+    {else/}
+        <p> not equal</p>
+    {/neq}
 
-    <!--for-->
-    {for start="1" end="10" step="2" name="k"}
-    {/*默认变量 name=$i */}
-    
-    <li>{$k}</li>
-    {/for}
+    <!--gt 大于-->
+    {gt name="a" value="8"}
+        <p>大于</p>
+    {else/}
+        <p>不大于</p>
+    {/gt}
 
+    <!--lt 小于-->
+    <!--egt 大于等于-->
+    <!--elt 小于等于-->
 </body>
 </html>
