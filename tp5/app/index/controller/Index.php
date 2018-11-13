@@ -18,7 +18,7 @@ class Index extends Controller
         // 如果结果不存在，返回空数组
         $result = Db::table('imooc_user')->select();
 
-//        find 返回一条数据，二维数组
+//        find 返回一条数据，一维数组
 //        如果结果不存在，NULL
 //        $result = Db::table('imooc_user')->where([
 //            'id'=>100
