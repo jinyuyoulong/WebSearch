@@ -9,31 +9,33 @@
 </head>
 <body>
     <h1>这里是index /view /index/index.html</h1>
-    <p>{$email}:{$email |md5}</p>
-    <p>{$email}:{$email|substr=0,8}</p>
-    <p>{$email}:{$email|substr=###,0,8}</p> ###用来占位，但是这里第一个参数可以省略
-    <p>{$email}:{$email|md5}:{$email|md5|strtoupper}</p> 管道方式 逐个执行函数
-    <p>{$time|date="Y-m-d",###}</p>
-substr($obj,0,8);
-md5($obj);
 
-    //运算
-    <p>a+b = {$a+$b}</p>
-    <p>a*b = {$a*$b}</p>
-    <p>a/b = {$a/$b}</p>
-    <p>a%b = {$a%$b}</p>
-    <p>a+b*c = {$a+$b*$c}</p>
-    <p>++a = {++$a}</p>
-
+    <!--volist-->
+    {volist name='list' id="data" offset="0" length="3" mod="2" empty="$empty" key="s"}
     {/*
-
-    view 模板注释
-    //默认值
-
+    mod 当前循环次数 取余
+    length 循环次数
+    offset 取值下标
+    key 当前循环次数
     */}
-    <p>{$fan|default="jinlong"}</p>
-    {literal} literal标签 内部变量不解析
-    {$email}
-{/literal}
+    <!--<p>{$mod}</p>-->
+    <!--<p>{$data.name}</p>-->
+    <!--<p>{$mod}:{$s}:{$data.name}</p>-->
+    {/volist}
+
+    <!--foreach-->
+    <!--{foreach list as $vo}-->
+    {foreach name="list" item="vo" key="s"}
+    {/* key 数组下标 */}
+    <!--<p>{$s}:{$vo.name} :{$vo.email}</p>-->
+    {/foreach}
+
+    <!--for-->
+    {for start="1" end="10" step="2" name="k"}
+    {/*默认变量 name=$i */}
+    
+    <li>{$k}</li>
+    {/for}
+
 </body>
 </html>
