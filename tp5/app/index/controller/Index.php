@@ -7,38 +7,32 @@ class Index extends Controller
 {
     public function index()
     {
-//        $result = Db::query('select * from imooc_user');
-//        $result = Db::execute("insert into imooc_user set username=?,password=?,email=?",[
-//            'imooc',
-//            md5('imooc'),
-//            'imooc@qq.com'
+        $db = Db::name('user');
+        # insert 返回值是影响记录的行数 插入数
+        # insertGetId 返回自增ID
+        # insertAll 批量插入 返回插入数量
+        
+//        $result = $db->insert([
+//           'username' => 'imooc_01',
+//           'password'   => md5('imooc_01'),
+//            'email' =>  'imooc_01@qq.com'
 //        ]);
 
-        //select 返回所有记录，二维数组
-        // 如果结果不存在，返回空数组
-        $result = Db::table('imooc_user')->select();
-
-//        find 返回一条数据，一维数组
-//        如果结果不存在，NULL
-//        $result = Db::table('imooc_user')->where([
-//            'id'=>100
-//        ])->find();
-
-//        value 返回一条数据，字段的值
-//        如果结果不存在，返回 NULL
-//        $result = Db::table('imooc_user')->value('username');
-
-        # column 返回一维数组，数组中的value就是需要的值
-        # 如果有第二个参数，第二个参数作为key 返回一维数组。第三个参数忽略
-        # 如果结果不存在，返回空数组
-//        $result = Db::table('imooc_user')->column('email','username','password');
-
-        # name 省略前缀
-//        $result = Db::name('user')->select();
-        # db 助手函数，每次调用都会实例化，第三个参数控制是否每次实例化
-        $result = \db('user')->find();
-        $result = \db('user',[],false)->find();
-
+//        $result = $db->insertGetId([
+//            'username' => 'imooc_03',
+//            'password'   => md5('imooc_03'),
+//            'email' =>  'imooc_03@qq.com'
+//        ]);
+        $data = [];
+        for ($i = 0; $i<10;$i++)
+        {
+            $data[] = [
+                'username' => "imooc_03_{$i}",
+            'password'   => md5("imooc_03_{$i}"),
+            'email' =>  "imooc_03_{$i}@qq.com"
+            ];
+        }
+        $result = $db->insertAll($data);
         dump($result);
 
     }
