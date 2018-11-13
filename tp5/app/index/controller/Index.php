@@ -8,9 +8,14 @@ class Index extends Controller
     public function index()
     {
 
-        $this->assign('a',10);
-        $this->assign('b',20);
+        $this->assign('title','index');
+
         return $this->fetch();
     }
 
+    public function page1()
+    {
+        $this->assign('title', 'page1');
+        return $this->fetch();
+    }
 }
