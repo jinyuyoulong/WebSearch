@@ -29,4 +29,13 @@ return [
         'layout_on'     => true,
         'layout_name'   => 'layout'
     ],
+    'db_config_01'  => [
+        'type'            => 'mysql',
+        'hostname'        => '127.0.0.1',
+        'database'        => 'course_db_config_01',
+        'username'        => 'root',
+        'password'        => '333',
+        'hostport'        => '3306',
+        'charset'         => 'utf8',
+    ],
 ];
