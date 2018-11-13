@@ -5,11 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+
 </head>
 <body>
     <h1>这里是index /view /index/index.html</h1>
-    <p>{$email}</p>
+    //使用系统变量
+    <p>{$Think.server.HTTP_HOST}</p>
+    <p>{$Think.env.PHP_STATUS}</p>
+    <p>{$Think.session.email}</p>
+    <p>{$Think.cookie.name}</p>
+
+    //h获取变量
+    <p>{$Think.get.id}</p>
+    <p>{$Think.request.id}</p>
+    <p>{$Think.post.sid}</p>
+    //获取常量
+    <p>{$Think.const.APP_PATH}</p>
+    <p>{$Think.APP_PATH}</p>
+
+    <?php
+    //不建议这种用法，需要用是，应考虑调整controller
+        $a  =10;
+        $b = 20;
+        if( $a > $b ){
+        echo "1";
+    }else{
+        echo "2";
+    }
+    ?>
 </body>
 </html>

@@ -7,9 +7,10 @@ class Index extends Controller
 {
     public function index()
     {
-        return $this->fetch('index',[
-            'email'=>'fan@qq.com'
-        ]);
+//        dump($_SERVER);
+        session('email','fans@qq.com');
+        cookie('name','范金龙');
+        return $this->fetch();
     }
 
 }
