@@ -7,9 +7,12 @@ class Index extends Controller
 {
     public function index()
     {
-//        dump($_SERVER);
-        session('email','fans@qq.com');
-        cookie('name','范金龙');
+        $this->assign('email','fans@qq.com');
+        $this->assign('time',time());
+        $this->assign('user','fas');
+        $this->assign('a',10);
+        $this->assign('b',20);
+        $this->assign('c',30);
         return $this->fetch();
     }
 
