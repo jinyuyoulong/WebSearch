@@ -7,46 +7,21 @@ class Index extends Controller
 {
     public function index()
     {
-        # 用于仅更新一些数据的情况
-        // $result = User::update([
-        //     'id'    =>  '1',
-        //     'username'  =>  'fans'
-        // ]);
-
-        # 不建议使用，不能拿到是否成功
-        # 第二个参数是 where的作用
-        // $result = User::update([
-        //     'id'    =>  '2',
-        //     'username'  =>  'fans'
-        // ],['id'=>2 ]);
-
-        // $result = User::update([            
-        //     'username'  =>  'fans'
-        // ],function ($query)
-        // {
-        //     $query->where('id','LT', 5);
+        // $result = User::destroy(1);
+        // $result = User::destroy(['id',2]);
+        // $result = User::destroy(function($query){
+        //     $query->where("id","<","5");
         // });
 
-        # 返回影响的行数量 推荐使用
-        // $result = User::where('id', '<', '6')
-        // -> update([
-        //     'username' => 'fans'
-        // ]);
+        // $userModel = User::get(6);
+        // $result = $userModel->delete();
 
-        // $userModel = User::get(1);
-        // $userModel->username = '123';
-        // $userModel->email = "123@qq.com";
-        // $result = $userModel->save();
+       // $result = User::where('id',"=","5")
+        // $result = User::where('id',"<","10")
 
-        $userModel = new User;
-        # 不建议使用，不能拿到是否成功
-        // $result = $userModel->save(['email'=>'222@qq.com'],['id'=>10]);
-        // $result = $userModel->save(['email'=>'222@qq.com'],function ($query){
-        //     $query->where('id', '<', 5);
-        // });
+        $result = User::where("1=1")// 删除所有数据 1=1 恒等于1
+        ->delete();
 
-        # 批量
-        $userModel 
         dump($result);
     }
 }
