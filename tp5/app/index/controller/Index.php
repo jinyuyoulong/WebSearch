@@ -10,16 +10,37 @@ class Index extends Controller
     public function index()
     {
 
-//        $result = User::get(1);// 1
-//        $user = new User(); // 2
-//        $user = Loader::model('User');// 3
-        $user = model('User'); // 4 助手函数
+        $result = User::get(1);
+//        $result = User::get(function ($query){
+//            $query->where("username","eq","imooc_1")
+//                ->field('username, email'); // 注意 field只传入了一个参数
+//        });
 
-        # 推荐使用前两种方式
+//        $result = User::where('id',2)
+//            ->find();
 
-        $result = $user::get(5);
-        
-        $result = $result->toArray();
+//        dump($result->username);
+
+//        $result = User::all("1,2,3");
+//        $result = User::all([1,2,3]);
+//        $result = User::all(function ($query){
+//            $query->where("id", "<", "5")
+//            ->field("username,id");
+//        });
+
+//        $result = User::where("id", ">", 15)
+//            -> field("id, username")
+//            -> limit(3)
+//            -> order("id DESC")
+//            ->select();
+//        foreach ($result as $value)
+//        {
+//            $result = $value->toArray();
+//            dump($result);
+//        }
+
+//        $result = User::where("id",10)->value('id');
+        $result = User::column("email","id"); //返回数组：id:email 格式
 
         dump($result);
 
