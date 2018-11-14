@@ -7,21 +7,26 @@ class Index extends Controller
 {
     public function index()
     {
-        // $result = User::destroy(1);
-        // $result = User::destroy(['id',2]);
-        // $result = User::destroy(function($query){
-        //     $query->where("id","<","5");
-        // });
+         // $result = User::count();
+        // $result = User::where('id',">",5)
+        // -> count();
 
-        // $userModel = User::get(6);
-        // $result = $userModel->delete();
+        # 最大值
+        // $result = User::max('num');
 
-       // $result = User::where('id',"=","5")
-        // $result = User::where('id',"<","10")
+        // $result = User::where('id','<',25)
+        // -> max('num');
 
-        $result = User::where("1=1")// 删除所有数据 1=1 恒等于1
-        ->delete();
+        # 求和
+        // $result = User::sum('num');
+        // $result = User::where("id", "<", 24)
+        // -> sum('num');
 
-        dump($result);
+        # 平均值
+        // $result = User::avg('num');
+
+        # 最小值
+        $result = User::min('num');
+         dump($result);
     }
 }
