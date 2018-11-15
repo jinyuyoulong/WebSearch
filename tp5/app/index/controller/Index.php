@@ -7,9 +7,16 @@ class Index extends Controller
 {
     public function index()
     {
-        $result = User::get(3);
-        echo $result->sex;
-        dump($result->toArray());
-        dump($result->getData());
+//        $result = User::create([
+//           'username'   =>  "imooc",
+//           'email'      =>  "imooc@qq.com",
+//           'num'        =>  10,
+//           'sex'        =>  0,
+//           'password'   =>  'imooc'
+//        ]);
+        $userModel = User::get(16);
+        $userModel->sex = 1;
+        $result = $userModel->save();
+        dump($result);
     }
 }
