@@ -8,59 +8,16 @@
 
 namespace app\index\model;
 use think\Model;
+use traits\model\SoftDelete;
 
 class User extends Model
 {
-    # 自动完成 配置完字段+setter function
-    protected $auto = [
-      'time'
-    ];
+    # 为class 引入 文件
+    use SoftDelete;
 
-    # 插入执行
-    protected $insert = [
-      'time_insert'
-    ];
-    # update 执行
-    protected $update = [
-      'time_update'
-    ];
-    # 命名 imooc_user  ->     User.php    User
-    # imooc_user_info ->    UserInfo.php  UserInfo
-
-    public function getSexAttr($value)
-    {
-        switch ($value){
-            case "1":
-                return "男";
-                break;
-            case "0":
-                return "女";
-                break;
-            default:
-                return "未知";
-                break;
-        }
-    }
-
-//    public function setPasswordAttr($value)
-    public function setPasswordAttr($value,$data)
-    {
-        return md5($value);
-//        return $value."_".$data['email'];
-    }
-
-    public function setTimeAttr()
-    {
-        return time();
-    }
-
-    public function setTimeInsertAttr()
-    {
-        return time();
-    }
-
-    public function setTimeUpdateAttr()
-    {
-        return time();
-    }
+    # 设置单表 自动添加time
+    protected $autoWriteTimestamp = true;
+    protected $createTime = false;//默认 create_time
+    protected $updateTime = 'update_at';//默认 update_time
+//    protected $deleteTime = 'delete_at';//默认 delete_time
 }
