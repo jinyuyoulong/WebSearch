@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>网页表格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        .score{
+            font: 14px 宋体;
+            border: 2px #069 solid;
+            text-align: center;
+            border-collapse: collapse;/*两个边框合并为一条*/
+        }
+        thead{
+            color: red;
+        }
+        tbody{
+            color: blue;
+        }
+        tfoot{
+            color: green;
+        }
+        .score td{
+            border: 1px #069 solid;
+        }
+        .score th{
+            border: 1px #069 solid;
+        }
+    </style>
+</head>
+
+<body>
+    <table width="200" class="score"> 
+        <caption>成绩表</caption>
+        <thead>
+            <tr>
+                <th width="60">姓名</th>
+                <th width="60">数学</th>
+                <th width="60">语文</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>陈旭</td>
+                <td>90</td>
+                <td>95</td>
+            </tr>
+            <tr>
+                <td>小明</td>
+                <td>87</td>
+                <td>65</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>合计</td>
+                <td>177</td>
+                <td>160</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
