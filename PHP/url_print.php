@@ -1,4 +1,6 @@
 <?php
+// PHP 全局变量 获取host相关信息
+
 //获取域名或主机地址 
 echo $_SERVER['HTTP_HOST']."<br>"; 
 #localhost

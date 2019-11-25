@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="echarts.js"></script>
+<script src="china.js"></script>
+<style type="text/css">
+	.tag{width: 300px;height: }
+</style>
+<title>图表demo</title>
+</head>
+<body>
+	<div style="width:400px; height:600px;color:blue">
+		<strong>以下为该报告的部分内容呈现：</strong> 
+	</div>
+	<div style="color:#000;background:blue">
+		<h4>TOP10活动发布量最大的城市</h4> <br>
+		<h5>有你所在的城市吗？</h5>
+	</div>
+	<div id="china" style="width: 600px;height:400px"></div>
+		
+	<script type="text/javascript">
+		function randomData() {
+		    return Math.round(Math.random()*1000);
+		}
+		var myChart = echarts.init(document.getElementById('china'));
+		var option = {
+			    title: {
+			        text: 'iphone销量',
+			        subtext: '纯属虚构',
+			        left: 'center'
+			    },
+			    tooltip: {
+			        trigger: 'item'
+			    },
+			    legend: {
+			        orient: 'vertical',
+			        left: 'left',
+			        data:['iphone3','iphone4','iphone5']
+			    },
+			    visualMap: {
+			        min: 0,
+			        max: 2500,
+			        left: 'left',
+			        top: 'bottom',
+			        text: ['高','低'],           // 文本，默认为数值文本
+			        calculable: true
+			    },
+			    toolbox: {
+			        show: true,
+			        orient: 'vertical',
+			        left: 'right',
+			        top: 'center',
+			        feature: {
+			            dataView: {readOnly: false},
+			            restore: {},
+			            saveAsImage: {}
+			        }
+			    },
+			    series: [
+			        {
+			            name: 'iphone3',
+			            type: 'map',
+			            mapType: 'china',
+			            roam: false,
+			            label: {
+			                normal: {
+			                    show: true
+			                },
+			                emphasis: {
+			                    show: true
+			                }
+			            },
+			            data:[
+			                {name: '北京',value: randomData() },
+			                {name: '天津',value: randomData() },
+			                {name: '上海',value: randomData() },
+			                {name: '重庆',value: randomData() },
+			                {name: '河北',value: randomData() },
+			                {name: '河南',value: randomData() },
+			                {name: '云南',value: randomData() },
+			                {name: '辽宁',value: randomData() },
+			                {name: '黑龙江',value: randomData() },
+			                {name: '湖南',value: randomData() },
+			                {name: '安徽',value: randomData() },
+			                {name: '山东',value: randomData() },
+			                {name: '新疆',value: randomData() },
+			                {name: '江苏',value: randomData() },
+			                {name: '浙江',value: randomData() },
+			                {name: '江西',value: randomData() },
+			                {name: '湖北',value: randomData() },
+			                {name: '广西',value: randomData() },
+			                {name: '甘肃',value: randomData() },
+			                {name: '山西',value: randomData() },
+			                {name: '内蒙古',value: randomData() },
+			                {name: '陕西',value: randomData() },
+			                {name: '吉林',value: randomData() },
+			                {name: '福建',value: randomData() },
+			                {name: '贵州',value: randomData() },
+			                {name: '广东',value: randomData() },
+			                {name: '青海',value: randomData() },
+			                {name: '西藏',value: randomData() },
+			                {name: '四川',value: randomData() },
+			                {name: '宁夏',value: randomData() },
+			                {name: '海南',value: randomData() },
+			                {name: '台湾',value: randomData() },
+			                {name: '香港',value: randomData() },
+			                {name: '澳门',value: randomData() }
+			            ]
+			        },
+			        {
+			            name: 'iphone4',
+			            type: 'map',
+			            mapType: 'china',
+			            label: {
+			                normal: {
+			                    show: true
+			                },
+			                emphasis: {
+			                    show: true
+			                }
+			            },
+			            data:[
+			                {name: '北京',value: randomData() },
+			                {name: '天津',value: randomData() },
+			                {name: '上海',value: randomData() },
+			                {name: '重庆',value: randomData() },
+			                {name: '河北',value: randomData() },
+			                {name: '安徽',value: randomData() },
+			                {name: '新疆',value: randomData() },
+			                {name: '浙江',value: randomData() },
+			                {name: '江西',value: randomData() },
+			                {name: '山西',value: randomData() },
+			                {name: '内蒙古',value: randomData() },
+			                {name: '吉林',value: randomData() },
+			                {name: '福建',value: randomData() },
+			                {name: '广东',value: randomData() },
+			                {name: '西藏',value: randomData() },
+			                {name: '四川',value: randomData() },
+			                {name: '宁夏',value: randomData() },
+			                {name: '香港',value: randomData() },
+			                {name: '澳门',value: randomData() }
+			            ]
+			        },
+			        {
+			            name: 'iphone5',
+			            type: 'map',
+			            mapType: 'china',
+			            label: {
+			                normal: {
+			                    show: true
+			                },
+			                emphasis: {
+			                    show: true
+			                }
+			            },
+			            data:[
+			                {name: '北京',value: randomData() },
+			                {name: '天津',value: randomData() },
+			                {name: '上海',value: randomData() },
+			                {name: '广东',value: randomData() },
+			                {name: '台湾',value: randomData() },
+			                {name: '香港',value: randomData() },
+			                {name: '澳门',value: randomData() }
+			            ]
+			        }
+			    ]
+			};
+		    myChart.setOption(option);
+	</script>
+
+	<div id="pie" style="width: 600px;height:400px"></div>
+	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('pie'));
+		myChart.setOption({
+		    series : [
+	        {
+	            name: '访问来源',
+	            type: 'pie',
+	            radius: '55%',
+	            data:[
+	                {value:235, name:'视频广告'},
+	                {value:274, name:'联盟广告'},
+	                {value:310, name:'邮件营销'},
+	                {value:335, name:'直接访问'},
+	                {value:400, name:'搜索引擎'}
+	            ]
+	        }
+		    ]
+		});
+	</script>
+
+ <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 400px;height:400px;"></div>
+    <script type="text/javascript">
+	var myChart = echarts.init(document.getElementById('main'));
+	var option = {
+		title: {
+			text: 'ECharts dome'
+		},
+		tooltip: {},
+		legend: {
+			data:['销量']
+		},
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+	};
+	myChart.setOption(option);
+	</script>
+
+	<div id="bar" style="width: 400px;height:200px"></div>
+	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('bar'));
+		option = {
+		    title: {
+		        text: '世界人口总量',
+		        subtext: '数据来自网络'
+		    },
+		    tooltip: {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'shadow'
+		        }
+		    },
+		    // legend:['其他','复制链接','新浪微博','QQ空间','QQ','微信朋友圈','微信朋友或群'],
+		    // color: ['#2c343c','#c23531','#2c343c','#c23531','#2c343c','#c23531','#c23531'],
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis: {
+		        type: 'value',
+		        boundaryGap: [0, 1]
+		    },
+		    yAxis: {
+		        type: 'category',
+		        data: ['其他','复制链接','新浪微博','QQ空间','QQ','微信朋友圈','微信朋友或群']
+		    },
+		    series: [
+		        {
+		            name: '2011年',
+		            type: 'bar',
+		            data: [0.01, 0.01, 0.02,0.02, 0.05, 0.37,0.52],
+		            // data: [ 
+		            // 	value:[0.01, 0.01, 0.02,0.02, 0.05, 0.37,0.52],
+		            	// itemStyle: {
+		            	// 	normal:{
+		            	// 		color: ['#2c343c','#c23531','#2c343c','#c23531','#2c343c','#c23531']
+		            	// 	}
+		            	// }
+		            // ]
+		        },
+		    ]
+		};
+		
+		myChart.setOption(option);
+	</script>
+
+
+	<!-- //////////////////////////////// -->
+	<div id="line" style="width: 600px;height:400px"></div>
+	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('line'));
+		var symbolSize = 20;
+		var data = [[2014,50], [2015,100], [2016,300]];
+		var points = [];
+
+		option = {
+		    title: {
+		        text: 'Click to Add Points'
+		    },
+		    tooltip: {
+		        formatter: function (params) {
+		            var data = params.data || [0, 0];
+		            return data[0].toFixed(2) + ', ' + data[1].toFixed(2);
+		        }
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis: {
+		        min: 2014,
+		        max: 2016,
+		        type: 'value',
+		        axisLine: {onZero: false}
+		    },
+		    yAxis: {
+		        min: 0,
+		        max: 300,
+		        type: 'value',
+		        axisLine: {onZero: false}
+		    },
+		    series: [
+		        {
+		            id: 'a',
+		            type: 'line',
+		            smooth: true,
+		            symbolSize: symbolSize,
+		            data: data
+		        }
+		    ]
+		};
+		myChart.setOption(option);
+	</script>
+</html>
