@@ -1,8 +1,12 @@
 *{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    transition-duration: 200ms;
+    -webkit-transition-duration: 200ms;
 }
-
+body{
+    background: #f9f9f9;
+}
 a{
     text-decoration: none;
 }
@@ -98,11 +102,27 @@ a{
 }
 
 .header .search-bar input:focus{
-    box-shadow: inset 0 0 2px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, .3);
 }
 .header .search-bar button{
     width: 20%;
-
     background-color: #dd182b;
     color: white;
+}
+
+.header .search-bar button:hover{
+    background: #ad1625;
+}
+
+.header .card{
+    text-align: center;
+}
+.header .card a{
+    background: #ffffff;
+    border: 1px solid #dd182b;
+    padding: 10px;
+    color: #dd182b;
+    width: 80%;
+    float: right;
 }
