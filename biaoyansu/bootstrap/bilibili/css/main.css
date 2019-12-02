@@ -1,0 +1,17 @@
+.navbar img {
+    display: block;
+    max-width: 100%;
+}
+.navbar-brand {
+    background-image: url(https://dummyimage.com/50x50/ddbd34/fff);
+    background-size: 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 50px;
+}
+.video-content .video {
+    background-color: chartreuse;
+    width: 300px;
+    height: 500px;
+    
+}
