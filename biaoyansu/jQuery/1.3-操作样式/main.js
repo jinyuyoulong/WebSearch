@@ -14,6 +14,14 @@ var board = $('.board')
 console.log(board.hasClass('black'))
 console.log(board.hasClass('haha'))
 
+// 动画
+board.hide(1000)
+board.show(1000)
+board.fadeOut()
+board.fadeIn()
+board.slideUp()
+board.slideDown()
+
 function toggle() {
     if (board.hasClass('active')) {
         board.removeClass('active')
