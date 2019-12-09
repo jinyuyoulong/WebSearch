@@ -8,20 +8,19 @@ var loaded = false
 
 trigger.on('click',
     function () {
-        card.toggle()
+        // card.toggle()
         // card.load('result.html')
         // card.toggle()
 
-        // if (card.is(':visible')) {
-        //     // card.slideUp()
-        //     card.hide()
-        // }else{
-        //     if (!loaded) {
-        //         card.load('result.html')
-        //         loaded = true
-        //     }
+        if (card.is(':visible')) {
+            card.slideUp()
+            // card.hide()
+        }else{
+            if (!loaded) {
+                card.load('result.html')
+                loaded = true
+            }
             
-        //     card.slideDown()
-        // }
-  
+            card.slideDown()
+        }
 })
