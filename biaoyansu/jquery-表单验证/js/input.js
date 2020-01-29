@@ -5,11 +5,17 @@ $(function () {
     // 需要知道是哪个input，输入选择器
     window.Input = function (selector) {
         var $ele
-        ,rule = {};
+            , $error_ele
+            , me = this
+        ,rule = 
+        {
+            required: true
+        };
 
         this.load_validator = function () {
             var val = this.get_val()
             this.validator = new Validator(val,rule)
+         
         }
 
         this.get_val = function () {
@@ -19,7 +25,29 @@ $(function () {
         function init() {
             find_ele()
             parse_rule()
-            this.load_validator()
+            get_error_ele()
+            // 这里 this 变成了 window，在严格模式下报错：undefined
+            me.load_validator()
+            listen()
+        }
+
+        function listen() {
+            $ele.on('blur',function () {
+                var valid = me.validator.is_valid(me.get_val())
+                if (valid)
+                    $error_ele.hide()
+                else
+                    $error_ele.show()
+
+                console.log('valid:', valid)
+            })
+        }
+
+        function get_error_ele(id) {
+            $error_ele = $(get_error_id())
+        }
+        function get_error_id() {
+            return '#' + $ele.attr('name') + '-input-error'
         }
 
         function find_ele() {
@@ -39,7 +67,7 @@ $(function () {
                 return
             }
             // 分割字符串
-            var rule_arr = rule_string.splite('|')
+            var rule_arr = rule_string.split('|')
             // [
             // pattern: "^[0-9a-z]$" ,
             // max: 100 ,
@@ -48,9 +76,11 @@ $(function () {
             // ]
             for (let i = 0; i < rule_arr.length; i++) {
                 const item_str = rule_arr[i];
-                var item_arr = item_str.splite(':')
-                rule[item_arr[0]] = JSON.parse(rule[item_arr[1]])
+                var item_arr = item_str.split(':')
+                rule[item_arr[0]] = JSON.parse(item_arr[1])
+                
             }
+            console.log('rule:' + JSON.stringify(rule))
         }
 
 

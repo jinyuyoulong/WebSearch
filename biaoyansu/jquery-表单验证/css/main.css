@@ -27,4 +27,8 @@ h1{
 }
 .input-error{
     color: salmon;
+    padding-top: 5px;
+    color: #a10;
+    font-size: 90%;
+    display: none;
 }
