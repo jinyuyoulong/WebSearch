@@ -1,0 +1,30 @@
+*{
+    background-color: rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+
+.containor{
+    margin: 0px auto;
+    width: 1080px;
+}
+.containor-sm{
+    max-width: 450px;
+}
+.input-wrap{
+    margin-bottom: 10px;
+}
+.header{
+    margin-top: 30px;
+}
+h1{
+    padding-top: 0px;
+}
+.input-control{
+    padding: 5px 10px;
+    border: 1px solid #000000;
+    color: #ffffff;
+    width: 100%;
+}
+.input-error{
+    color: salmon;
+}

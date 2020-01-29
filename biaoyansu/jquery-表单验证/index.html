@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+</head>
+<body>
+
+    <div class="containor containor-sm">
+        <div class="header">
+            <h1>Yo.</h1>
+        </div>
+        <div class="form">
+            <form action="">
+                
+                <div class="input-wrap">
+                    <label for="">姓名：</label>
+                    <input data-rule='pattern:"^[0-9a-z]$"|max:100|maxlength:5|requested:true'type="text" name="username" class="input-control">
+                    <div class="input-error">姓名不能为空</div>
+                </div>
+            
+            </form>
+        </div>
+        
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/volidator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
