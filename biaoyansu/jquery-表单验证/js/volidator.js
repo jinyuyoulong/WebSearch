@@ -33,16 +33,14 @@ $(function () {
         }
         this.validate_min = function () {
             pre_max_min()
-            return val >= rule.max
+            return val >= rule.min
         }
         this.validate_maxlength = function () {
             pre_length()
-            console.log('maxlength:' + val.length, rule.maxlength)
             return val.length <= rule.maxlength
         }
         this.validate_minlength = function () {
             pre_length()
-            console.log('minlength:' + val.length, rule.minlength)
             return val.length >= rule.minlength
         }
         this.validate_numeric = function () {

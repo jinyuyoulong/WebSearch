@@ -15,7 +15,6 @@ $(function () {
         this.load_validator = function () {
             var val = this.get_val()
             this.validator = new Validator(val,rule)
-         
         }
 
         this.get_val = function () {
@@ -38,8 +37,6 @@ $(function () {
                     $error_ele.hide()
                 else
                     $error_ele.show()
-
-                console.log('valid:', valid)
             })
         }
 
@@ -80,12 +77,8 @@ $(function () {
                 rule[item_arr[0]] = JSON.parse(item_arr[1])
                 
             }
-            console.log('rule:' + JSON.stringify(rule))
         }
 
-
         init()
-        
-
     }
 })

@@ -1,8 +1,10 @@
 *{
-    background-color: rgba(0, 0, 0, .1);
+    /* background-color: rgba(0, 0, 0, .1); */
     box-sizing: border-box;
 }
-
+body{
+    background-color: #f0f0f0;
+}
 .containor{
     margin: 0px auto;
     width: 1080px;
@@ -18,11 +20,18 @@
 }
 h1{
     padding-top: 0px;
+    text-align: center;
+}
+form, .input-control,.button-control {
+    border-radius: 3px;
+}
+form{
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
 }
 .input-control{
-    padding: 5px 10px;
-    border: 1px solid #000000;
-    color: #ffffff;
+    color: #444444;
     width: 100%;
 }
 .input-error{
@@ -31,4 +40,12 @@ h1{
     color: #a10;
     font-size: 90%;
     display: none;
+}
+.input-wrap label{
+    padding: 5px 0;
+    display: block;
+}
+.button-control, .input-control{
+    padding: 5px 10px;
+    border: 1px solid #999999;
 }
