@@ -10,6 +10,8 @@
     <div id="app">
         <li v-for="food in foodList">{{food.name}}每斤{{food.discount ? food.price * food.discount : food.price}}$</li>
     </div>
+    调试台打印 app.foodList.push({name:'米',price:5,discount:.3})
+    实验打印vfor效果
 </body>
 <script src="../lib/vue.js"></script>
 <script src="js/main.js"></script>
