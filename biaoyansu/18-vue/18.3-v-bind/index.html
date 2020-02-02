@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind:property 和 :property 是一样的，一般习惯写 :property 这种样式 -->
+        <!-- 当某一个类出现某种情况的时候在作反应，当isActive变量为true的时候，填入.active 的样式 -->
+        <a v-bind:href="url" :class="{active: isActive}">点我</a><br>
+        <img :src="img">
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+
+</html>
