@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-on key是事件的名称 -->
+        <!-- v-on:key 等于 @event 绑定事件 -->
+        <button v-on="{mouseenter: onEnter,mouseleave: onLeave}" v-on:click="onClick">点我</button>
+        <!-- $event 参数表示传递这个事件 -->
+        <!-- <form v-on:submit="onSubmit($event)">
+            <input type="text">
+            <input type="submit" >
+        </form> -->
+        <form v-on:keyup.enter="onEnter"  @submit.prevent="onSubmit">
+            <input type="text">
+            <button type="submit">提交</button>
+        </form>
+        <!-- <form v-on:submit.stop="onSubmit">
+            <input type="text">
+            <button type="submit">提交</button>
+        </form> -->
+        <!-- <form v-on:keyup="onKeyup">
+            <input type="text">
+            <button type="submit">键盘输入监听</button>
+        </form> -->
+        <!-- v-on 事件 stop: 停止冒号事件，不要往上报了 -->
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+
+</html>
