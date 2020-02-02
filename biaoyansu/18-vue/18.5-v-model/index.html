@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="name"> -->
+        <!-- <input type="text" v-model.lazy="name"> -->
+        <!-- v-model.lazy 事实上是触发了一个change事件 -->
+        <!-- input和其他标签不一样，他会先出发blur事件才会触发change 事件 -->
+        <input type="text" v-model.trim="name">
+        <pre>{{name}}</pre>
+        <input type="text" v-model.number="price">
+        <pre>{{price}}</pre>
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+
+</html>
