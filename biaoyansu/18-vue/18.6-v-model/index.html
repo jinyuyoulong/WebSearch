@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <label for="">
+            男
+            <input type="radio" v-model="sex" value="male">
+        </label>
+        <label for="">
+            女
+            <input type="radio" v-model="sex" value="female">
+        </label> -->
+        <!-- <label for="">
+            男
+            <input type="checkbox" v-model="sex" value="male">
+        </label>
+        <label for="">
+            女
+            <input type="checkbox" v-model="sex" value="female">
+        </label>
+
+        <br>
+        {{sex}} -->
+        <!-- <textarea v-model="article" id="" cols="30" rows="10"> -->
+        <!-- </textarea> -->
+        <div>
+            你来自哪里？
+        </div>
+        
+        <select v-model="from">
+            
+            <option value="1">王家沟</option>
+            <option value="2">背背山</option>
+        </select>
+        <div>
+            你来自哪里？
+        </div>
+        {{from}}
+        <!-- multiple 多选 -->
+        <select v-model="dest" multiple>
+
+            <option value="1">王家沟</option>
+            <option value="2">背背山</option>
+        </select>
+        <br>
+        {{dest}}
+        
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+
+</html>
