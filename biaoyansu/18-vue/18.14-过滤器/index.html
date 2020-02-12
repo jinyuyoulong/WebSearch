@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue组件</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="length">mm
+            {{length | meter}}
+        </div>
+        <hr>
+        <!-- currency('USD') 过滤器传参 unit 参数 -->
+        <!-- currency() 第一个参数在外边，其他参数在里面 -->
+        <input type="text" v-model="price">{{price | currency('USD')}}
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+</html>
