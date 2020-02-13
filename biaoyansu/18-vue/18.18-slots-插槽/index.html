@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue组件</title>
+    <style>
+        .panel {
+            max-width: 300px;
+            border: 1px solid #999999;
+            margin-bottom: 15px;
+        }
+        .panel * {
+            /* 横线没有贯穿边框，在这里设置 panel 下所有的子元素 */
+            padding: 15px;
+        }
+        .panel .title {
+            border-bottom: 1px solid #999999;
+        }
+        .panel .footer {
+            border-top: 1px solid #999999;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <panel>
+            <div slot="title">Yo</div>
+            <div class="" slot="content">
+                Yo
+                Yo
+                Yo
+            </div>
+            <!-- <div class="" slot="footer">更多信息</div> -->
+        </panel>
+        <panel>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi mollitia tenetur, eaque dolor, ipsa beatae ea fugiat facere quae expedita aspernatur amet dicta! Ullam minima exercitationem hic saepe error numquam.
+            Yo
+        </panel>
+    </div>
+    <template id="panel-tpl">
+        <!-- panel 面板 -->
+        <div class="panel">
+            <div class="title">
+                <slot name="title"></slot>
+            </div>
+            <div class="content">
+               <slot name="content"></slot>
+               <!-- 动态内容，可以插入东西 -->
+               <!-- slot name 指定插入搭配 div slot="content" 使用 -->
+            </div>
+            <div class="footer">
+                <!-- 指定默认值 -->
+                <slot name="footer">更多信息</slot>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="js/main.js"></script>
+</html>
