@@ -18,6 +18,7 @@
 <body>
     <div id="app">
         <!-- 我们希望一些卡片突出显示，怎么获取pin 的值 -->
+        <!-- 自定义指令修饰符和传参 -->
         <div v-pin:true.bottom.right="card1.pinned" class="card">
             <button @click="card1.pinned = !card1.pinned">钉住/取消</button>
             Lorem ipsum dolor sit 
