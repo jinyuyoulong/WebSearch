@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务清单 Vue 实例</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div class="page-top">
+        <div class="page-content">
+            <h2>todo list 任务计划表</h2>
+        </div>
+    </div>
+    <div class="main">
+        <h3 class="big-title">添加任务</h3>
+        <input type="text" placeholder="例如：工作，学习，读书 提示：按 enter即可添加任务" class="task-input" v-on:keyup.enter="enterFn" v-model="todo">
+        <ul>
+            <li>{{unComplete}}个任务未完成</li>
+            <li class="action">
+                <a :class="{active:visibility!=='unCompleted'&&visibility!=='completed'}" href="#all">所有任务</a>
+                <a :class="{active:visibility==='unCompleted'}" href="#unCompleted">未完成任务</a>
+                <a :class="{active:visibility === 'completed'}" href="#completed">已完成任务</a>
+            </li>
+        </ul>
+        <h3 class="big-title">任务列表:</h3>
+        <div class="tasks">
+            <span class="no-task-tip" v-show="!list.length">没有添加任何任务</span>
+            <ul class="todo-list" v-show="list.length">
+                <li class="todo" v-for="item in filterData" 
+                v-bind:class="{completed:item.isComplete,editing:item===editorTodos}">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" v-model="item.isComplete">
+                        <label @ablclick="editorTodo(item)">{{item.title}}</label>
+                        <button class="destroy" @click="delFn(item)">X</button>
+                    </div>
+                    <input class="edit" type="text" v-focus="editorTodos===item" v-model="item.title"
+                           @blur="editorEnd(item)" @keyup.enter="editorEnd(item)" @keyup.esc="cancelEdit(item)" />
+                    <!-- <input type="text" class="edit" v-focus="editorTodos===item" v-model="item.title" 
+                    @blur="editorEnd(item)" @keyup.enter="editorEnd(item)" @keyup.esc="cancelEdit(item)"> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script src="js/main.js"></script>
+</html>
