@@ -23,6 +23,7 @@
                 <a :class="{active:visibility!=='unCompleted'&&visibility!=='completed'}" href="#all">所有任务</a>
                 <a :class="{active:visibility==='unCompleted'}" href="#unCompleted">未完成任务</a>
                 <a :class="{active:visibility === 'completed'}" href="#completed">已完成任务</a>
+                <!-- 点击a 标签 将tag路径作为参数赋给 visibility 变量 等于 completed，js中filter方法使用这个变量  -->
             </li>
         </ul>
         <h3 class="big-title">任务列表:</h3>
