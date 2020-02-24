@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/">首页</router-link>
+            <router-link to="/about">关于我们</router-link>
+            <router-link to="/user/王花花">王花花</router-link>
+            <router-link to="/user/李栓但">李栓但</router-link>
+        </div>
+        <div class="">
+            <router-view></router-view>
+        </div>
+    </div>
+    
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
