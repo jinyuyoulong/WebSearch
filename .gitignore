@@ -4,3 +4,4 @@ composer.lock
 phpunit.xml
 .vscode
 biaoyansu/shopDemo/img/*
+biaoyansu/webpack-demo/node_modules
