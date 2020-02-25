@@ -20,6 +20,7 @@ var routes = [{
     },
     {
         path: '/user/:name',
+        name: 'user',
         component: {
             template: `
             <div>
@@ -37,7 +38,7 @@ var routes = [{
                 template: `
             <div>
             用户：{{$route.params.name}}的详细信息
-            work
+            component
             </div>
             
             `,
@@ -56,4 +57,18 @@ var router = new VueRouter({
 new Vue({
     el: '#app',
     router: router,
+    methods:{
+      surf: function () {
+        setTimeout(function () {
+          // this 指向 window，router在前面声明了变量
+          // push 将值推到历史记录里
+          this.router.push('/about')
+          setTimeout(() => {
+            // 传参 首先给name 指定一个名称在上边。
+            // 用path的话params应该为 query， /user 不是 /user/:name
+            this.router.push({name:'user',params:{name:'王花花'}})
+          }, 2000);
+        },2000)
+      }
+    }
 });
