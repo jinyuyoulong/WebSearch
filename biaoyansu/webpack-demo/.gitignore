@@ -1,0 +1,7 @@
+/.idea
+/vendor
+composer.lock
+phpunit.xml
+.vscode
+node_modules
+package-lock.json
