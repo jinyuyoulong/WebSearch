@@ -1,0 +1,36 @@
+/*会暴露出去的注释*/
+.big {
+  color: blue;
+  width: 200px;
+  height: 300px;
+  position: relative;
+  border: 1px solid;
+  margin: 0 auto;
+}
+.big:hover {
+  background-color: lavenderblush;
+}
+.big .small {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid;
+  margin: auto;
+  background-color: red;
+  width: 200px;
+  height: 200px;
+}
+.big .small2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid;
+  margin: auto;
+  background-color: green;
+  width: 100px;
+  height: 100px;
+}

@@ -1,0 +1,39 @@
+/*会暴露出去的注释*/
+// 私有注释
+// 定义变量 使用 @开头
+@color: pink;// 使用 @color
+@m:margin;      // 使用 @{m}
+@selector:.big;  // 使用 @{selector}
+
+.juzhong(@w, @h,@c) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 1px solid;
+    margin: auto; //margin: 0 auto; 水平居中
+    //  以上所有联合实现垂直居中
+    background-color: @c;
+    width: @w;
+    height: @h;
+}
+.big {
+    color: blue;
+    width: 200px;
+    height: 300px;
+    position: relative;
+    border: 1px solid;
+    margin: 0 auto;
+    // & 将 选择子解析为同级追加（没有空格 .big:hover 格式）
+    &:hover{
+        background-color: lavenderblush;
+    }
+
+    .small {
+        .juzhong(200px,200px,red);
+    }
+    .small2{
+        .juzhong(100px,100px,green);
+    }
+}
