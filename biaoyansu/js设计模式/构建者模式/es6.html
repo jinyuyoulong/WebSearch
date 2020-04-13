@@ -1,0 +1,50 @@
+<script>
+    let studentCount = 0;
+    // es6 构建者模式
+    // 用一个对象构建另一个对象的实例，目的是为了方便在构建时做逻辑判断
+    class Student {}
+
+    class StudentBuilder {
+        constructor(){
+            this.student = new Student()
+        }
+        setName(name) {
+            this.student.name = name;
+        }
+        setGender(gender) {
+            if (gender != "男" && gender != "女") {
+                throw "好玩吗！"
+            }
+            this.student.gender = gender;
+        }
+        setHairLength(hairLength) {
+            if (
+            (this.student.gender == "男" && hairLength >= 2) ||
+            (this.student.gender == "女" && hairLength > 20)
+            ) {
+                throw "回家剪头去"
+            }
+            this.student.hairLength = hairLength;
+        }
+        build() {
+            studentCount++
+            console.log(studentCount);
+        return this.student
+        }
+    }
+    
+
+    const builder = new StudentBuilder()
+    builder.setName('王花花')
+    builder.setGender('女')
+    builder.setHairLength(20)
+    const whh = builder.build()
+    console.log(whh);
+
+    const builder2 = new StudentBuilder()
+    builder2.setName('李栓但')
+    builder2.setGender('男')
+    builder2.setHairLength(1)
+    const lsd = builder2.build()
+    console.log(lsd);
+</script>

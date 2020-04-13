@@ -1,0 +1,71 @@
+<form id="create">
+    <div>
+        name
+         <input type="text" name="name" id="" autofocus>
+    </div>
+    <div>
+        性别 
+        <input type="radio" name="gender" value="男" checked>男
+        <input type="radio" name="gender" value="女">女
+    </div>
+    <div>
+        头发长度 
+        <input type="number" name="hairLength">
+    </div>
+    <button type="submit">创建学生</button>
+    
+</form>
+<script>
+    var createForm = document.getElementById('create')
+    init()
+
+    function init() {
+        createForm.addEventListener('submit',function (e) {
+            e.preventDefault()
+            var name = document.querySelector('[name=name]').value
+            var gender = document.querySelector('[name=gender]:checked').value
+            var hairLength = document.querySelector('[name=hairLength]').value
+            
+            try {
+                var builder = new StudentBuilder()
+                builder.setName(name)
+                builder.setGender(gender)
+                builder.setHairLength(hairLength)
+                var student = builder.build()
+            } catch (e) {
+                alert(e)
+            }
+            
+            console.log(student);
+        })
+        
+    }
+    class Student {}
+
+    class StudentBuilder {
+        constructor(){
+            this.student = new Student()
+        }
+        setName(name) {
+            this.student.name = name;
+        }
+        setGender(gender) {
+            if (gender != "男" && gender != "女") {
+                throw "好玩吗！"
+            }
+            this.student.gender = gender;
+        }
+        setHairLength(hairLength) {
+            if (
+            (this.student.gender == "男" && hairLength >= 2) ||
+            (this.student.gender == "女" && hairLength > 20)
+            ) {
+                throw "回家剪头去"
+            }
+            this.student.hairLength = hairLength;
+        }
+        build() {
+            return this.student
+        }
+    }
+</script>

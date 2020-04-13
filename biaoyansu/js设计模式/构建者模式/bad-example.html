@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构建者模式</title>
+</head>
+
+<body>
+    <script>
+        function Student() {}
+        // Student.prototype.scrum
+        var length = 3;
+        var whh = new Student()
+        whh.name = "王花花"
+        whh.gender = "男"
+        whh.hairLength = length
+        if (
+            (whh.gender == "男" && whh.hairLength > 2) ||
+            (whh.gender == "女" && whh.hairLength > 20)
+        ) {
+            throw "回家剪头去"
+        }
+        console.log(whh.name)
+    </script>
+</body>
+
+</html>
