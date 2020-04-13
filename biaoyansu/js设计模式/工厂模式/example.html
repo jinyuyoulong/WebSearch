@@ -1,0 +1,40 @@
+<script>
+    // 比如需要创建不同学科的学生对象
+    function factory(name, type) {
+        switch (type) {
+            case "文科":
+                return new Student(name,['历史','地理','政治'])
+                break;
+            case "理科":
+                return new Student(name,['历史','地理','政治'])
+                break;
+            default:
+            throw "别瞎填，没有这个专业"
+                break;
+        }
+    }
+
+    function Student(name,subjects) {
+        this.name = name
+        // 文科 ['历史','地理','政治']
+        // 理科 ['生物','化学','物理']
+        this.subjects = subjects
+    }
+    // class Student{
+    //     // 文科 ['历史','地理','政治']
+    //     // 理科 ['生物','化学','物理']
+    //     constructor(name,arr){
+    //         this.name = name
+    //         this.zhuanye = arr
+    //     }
+    // }
+    var whh = factory("王花花",'文科')
+    var lsd = factory("李栓但",'理科')
+    // var lbb = factory("刘贝贝",'撒科')
+    console.log(whh)
+    console.log(lsd);
+    // console.log(lbb);
+    
+    // 工厂模式是利用封装的方法，批量的制造类似的对象 的一种方法。
+    // 而不仅仅是代码的封装
+</script>
